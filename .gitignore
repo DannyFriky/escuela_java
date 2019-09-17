@@ -22,3 +22,5 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 *_IGNORAR.txt
 /01_EjemploJava/nbproject/private/
+/01_EjemploJava/dist/
+/01_EjemploJava/build/
