@@ -4,20 +4,45 @@ package ejemplojava;
  * @author Danny
  */
 public class Coche {
-    
+   
+	public static final int CAPACIDAD_DEPOSITO = 60; //Como declarar una constante
+	
     private final byte numRuedas; //valor constante
     private final String marca; //valor constante
-    private final int capacidadDeposito;
-    private final boolean esGasolina;
+    private final int capacidadDeposito; //valor constante
+    private final TipoCarburante carburante; //valor constante
     private double nivelDeposito;
 	private boolean arrancado;
+	private TipoColor color;
 
-	public Coche(String marca, int capacidad, boolean gasolina){
+	public Coche(String marca, int capacidad, TipoCarburante carburante, TipoColor color){
 		this.numRuedas =4;
 		this.marca = marca;
 		this.capacidadDeposito = capacidad;
-		this.esGasolina =gasolina;
+		this.carburante = carburante;		
+		this.nivelDeposito=capacidad/2;
 		this.arrancado = false;
+		this.color = color;
+	}
+	
+		public Coche(String marca, int capacidad, TipoCarburante carburante, String color){
+		this.numRuedas =4;
+		this.marca = marca;
+		this.capacidadDeposito = capacidad;
+		this.carburante = carburante;		
+		this.nivelDeposito=capacidad/2;
+		this.arrancado = false;
+		
+		//this.color =Enum.valueOf(TipoColor.class, color);  Esta no me mola, pero ya que esta -\o/-
+		//this.color = TipoColor.valueOf(color.toUpperCase());
+
+		for (TipoColor iteraC : TipoColor.values()){
+			if (color.compareToIgnoreCase(iteraC.name())==0)
+				this.color = iteraC;
+		}
+		
+		System.out.println("Color : "+this.color);
+		
 	}
 	
 	public void echarCarburante (double cantidad){
@@ -26,6 +51,10 @@ public class Coche {
 			this.nivelDeposito += cantidad;
 		if(this.nivelDeposito>this.capacidadDeposito)
 			this.nivelDeposito = this.capacidadDeposito;	
+	}
+	
+	public void pintarCoche(TipoColor nuevoColor){
+		this.color = nuevoColor;
 	}
 	
 	public void acelerar(){
@@ -59,8 +88,8 @@ public class Coche {
 		return capacidadDeposito;
 	}
 
-	public boolean isEsGasolina() {
-		return esGasolina;
+	public TipoCarburante isEsGasolina() {
+		return carburante;
 	}
 
 	public boolean isArrancado() {
@@ -70,6 +99,12 @@ public class Coche {
 	public double getNivelDep(){
 		return nivelDeposito;
 	}
+
+	public TipoColor getColor() {
+		return color;
+	}
+	
+	
 	
 	//SET
 	public void setArrancado(boolean arrancado) {

@@ -12,16 +12,16 @@ public class Main {
         
         Coche miCoche;
         
-        miCoche = new Coche("Skoda",60,false);//La instanciacion se hace con "new"
+        miCoche = new Coche("Skoda",60,TipoCarburante.DIESEL, "azul");//La instanciacion se hace con "new"
 
-        miCoche.echarCarburante(30.0); //empezamos con medio deposito
+        miCoche.echarCarburante(20.0); //empezamos con medio deposito
         
         System.out.println("Coche salido de la fabrica : " + miCoche.getMarca());
         System.out.println("Nivel de deposito : " + miCoche.getNivelDep() + " litros");
         System.out.println("----------------");
-        Coche otroCoche = new Coche("Fiat",60,true);
+        Coche otroCoche = new Coche("Fiat",60,TipoCarburante.GASOLINA, TipoColor.NEGRO);
         
-        otroCoche.echarCarburante(30.0); //empezamos con medio deposito
+        otroCoche.echarCarburante(10.0); //empezamos con medio deposito
 
         
         System.out.println("Coche salido de la fabrica : " + otroCoche.getMarca());
