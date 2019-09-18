@@ -11,7 +11,7 @@ public final class StringAux {
 		public StringAux(String str){
 			this.str =str;
 		}
-		
+
 		public String getStr() {
 			return str;
 		}
@@ -70,7 +70,9 @@ public final class StringAux {
 		}
 		
 		public static int contarPalabras(String texto){
-			return 0;
+			String[] aux2 = texto.split("\\s+");
+
+			return aux2.length;
 		}
 
 }

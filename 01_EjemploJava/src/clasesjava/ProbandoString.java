@@ -6,7 +6,7 @@ public class ProbandoString {
 	
 	public static void tratarCadenas(){
 	
-		/*String texto = "En un lugar de la Mancha de cuyo nombre no quiero acordarme, vivia ...";
+		String texto = "En un lugar de la Mancha de cuyo nombre no quiero acordarme, vivia ...";
 		System.out.println(texto);
 		System.out.println("Cuarta letra : "+texto.charAt(3));
 		//Comparaciones
@@ -25,7 +25,7 @@ public class ProbandoString {
 		System.out.println("\"Mancha\" esta a partir del lugar : " + texto.indexOf("Mancha"));
 		
 		texto = texto.replace("lugar","bar");
-		System.out.println(texto);*/
+		System.out.println(texto);
 		StringAux texto3= new StringAux("          en      un       LUGAR     ");
 
 		System.out.println("El texto: "+ texto3.quitarEspacios() + " \ntiene :" + texto3.contarPalabras() +" palabras");
