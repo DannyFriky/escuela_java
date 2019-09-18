@@ -25,7 +25,7 @@ public class Coche {
 		this.color = color;
 	}
 	
-		public Coche(String marca, int capacidad, TipoCarburante carburante, String color){
+	public Coche(String marca, int capacidad, TipoCarburante carburante, String color){
 		this.numRuedas =4;
 		this.marca = marca;
 		this.capacidadDeposito = capacidad;
@@ -58,13 +58,16 @@ public class Coche {
 	}
 	
 	public void acelerar(){
-		if (arrancado) nivelDeposito -= 0.1;
+		
+		if (arrancado) {
+			nivelDeposito -= 0.1;
+				explosionCilindro();
+		}
 	}
     
-    public void vaciarDeposito(){
+    protected void vaciarDeposito(double cantidad){
 		
-		this.nivelDeposito = 3;
-        System.out.println("Deposito vaciado de : "  + this.toString());
+		this.nivelDeposito -= cantidad;
     }
     
     public String toString(){
@@ -110,4 +113,9 @@ public class Coche {
 	public void setArrancado(boolean arrancado) {
 		this.arrancado = arrancado;
 	}
+
+	protected void explosionCilindro(){
+		System.out.println("PUM");
+	}
+	
 }
