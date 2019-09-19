@@ -9,12 +9,16 @@ import poo.Coche;
 import poo.TipoCarburante;
 import poo.TipoColor;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.TreeMap;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import poo.Pelota;
 
 /**
  *
@@ -23,7 +27,7 @@ import static org.junit.Assert.*;
 public class TestColecciones {
 	
 	
-	 @Test
+	
 	 public void arrays() {
 		 byte ruedas = 4;
 		Coche[] coches = new Coche[3];
@@ -62,6 +66,53 @@ public class TestColecciones {
 		 System.out.println("-> "+ obj);
 		});
 		
+
+	 }
+	 @Test
+	 public void sets(){
+		 
+		HashSet<Pelota> pelotas = new HashSet<>();
+		Pelota p1 = new Pelota();
+		pelotas.add(p1);
+		Pelota p2 = new Pelota();
+		pelotas.add(p2);
+		Pelota p3 = new Pelota();
+		pelotas.add(p3);
+		
+		pelotas.add(p3);
+		 System.out.println("Set de pelotas :" +pelotas);
+		 assertEquals(pelotas.size(),3);
+		 
+		 HashMap<String,Boolean> coloresCalidos = new HashMap<>();
+		 coloresCalidos.put("BLANCO", false);
+		 coloresCalidos.put("NEGRO", false);
+		 coloresCalidos.put("ROJO", true);
+		 coloresCalidos.put("AZUL", false);
+		 coloresCalidos.put("VERDE", false);
+		 
+		 if(coloresCalidos.get("ROJO"))
+			 System.out.println("rojooo es calido");
+		 if(coloresCalidos.get("AZUL"))
+			 System.out.println("azul es calido");
+		 
+		 System.out.println("Verde es: " + coloresCalidos.get("VERDE"));
+		 
+		 HashMap<String, Coche> cochecitos = new HashMap<>();
+		 TreeMap<String, Coche> cochecitosT = new TreeMap<>();
+		 
+		Coche coche1 = new Coche("matricula1",(byte)4,"Skoda",60,TipoCarburante.DIESEL, TipoColor.AZUL) ;
+		Coche coche2 = new Coche("matricula2",(byte)4,"Fiat",60,TipoCarburante.ELECTRICO, TipoColor.ROJO) ;
+		Coche coche3 = new Coche("matricula3",(byte)4,"Kia",60,TipoCarburante.GASOLINA, TipoColor.NEGRO) ;
+		
+		cochecitosT.put(coche1.getMatricula(), coche1);
+		cochecitosT.put(coche2.getMatricula(), coche2);
+		cochecitosT.put(coche3.getMatricula(), coche3);
+		 
+		cochecitosT.forEach((clave,valor)->{
+			System.out.println("Clave : "+clave);
+			System.out.println("Valor :" + valor);
+		
+		});
 
 	 }
 }
