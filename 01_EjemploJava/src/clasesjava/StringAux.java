@@ -70,9 +70,8 @@ public final class StringAux {
 		}
 		
 		public static int contarPalabras(String texto){
-			String[] aux2 = texto.split("\\s+");
-
-			return aux2.length;
+			
+			return texto.split("\\s+").length;
 		}
 
 }

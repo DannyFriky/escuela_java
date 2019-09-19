@@ -1,5 +1,9 @@
 package ejemplojava;
 
+import poo.TipoCarburante;
+import poo.CocheRally;
+import poo.TipoColor;
+import poo.Coche;
 import clasesjava.ProbandoString;
 
 /**
@@ -31,7 +35,7 @@ public class Main {
 
         
         System.out.println("Coche salido de la fabrica : " + otroCoche.getMarca());
-        otroCoche.vaciarDeposito(3.0);
+        //otroCoche.vaciarDeposito(3.0);
         System.out.println("Nivel de deposito : " + otroCoche.getNivelDep() + " litros");
         System.out.println("----------------");
 
@@ -53,7 +57,7 @@ public class Main {
 		
 		CocheRally cc = (CocheRally)miCoche;
 		System.out.println("y el rozamiento : "+ cc.getRozamiento());
-		cocheChulo.rozamiento = 10.0f;
+		//cocheChulo.rozamiento = 10.0f;
 		System.out.println("y el rozamiento : "+ cc.getRozamiento());
 
 		
