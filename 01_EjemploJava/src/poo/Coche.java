@@ -5,9 +5,15 @@ package poo;
  */
 public class Coche extends Vehiculo {
    
+	protected final int capacidadDeposito; //valor constante
+    protected final TipoCarburante carburante; //valor constante
+    protected double nivelDeposito;
 
 	public Coche(String matricula, byte ruedas, String marca, int capacidad, TipoCarburante carburante, TipoColor color){
-		super( matricula,  ruedas,  marca,  capacidad,  carburante,  color);
+		super( matricula,  ruedas,  marca,  color);
+		this.capacidadDeposito = capacidad;
+		this.carburante = carburante;		
+		this.nivelDeposito=capacidad/2;
 	}
 	
 //	public Coche(String marca){
@@ -75,7 +81,7 @@ public class Coche extends Vehiculo {
     
     public String toString(){
 
-		return "Coche " + marca +" nivel " + nivelDeposito +" arrancado : " + arrancado; //Math.round(nivelDeposito*100.0)/100.0;
+		return "Coche " + marca +" nivel " + Math.round(nivelDeposito*100.0)/100.0 +" arrancado : " + arrancado; //Math.round(nivelDeposito*100.0)/100.0;
 	}
 	
 	public void mostrarEstado(){

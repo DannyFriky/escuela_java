@@ -21,15 +21,16 @@ public class Main {
     public static void mainCoches(String[] args) {
         
         Coche miCoche;
+		byte ruedas = 4;
         
-        miCoche = new Coche("Skoda",60,TipoCarburante.DIESEL, "azul");//La instanciacion se hace con "new"
+        miCoche = new Coche("matricula",ruedas,"Skoda",60,TipoCarburante.DIESEL, TipoColor.AZUL);//La instanciacion se hace con "new"
 
         miCoche.echarCarburante(20.0); //empezamos con medio deposito
         
         System.out.println("Coche salido de la fabrica : " + miCoche.getMarca());
         System.out.println("Nivel de deposito : " + miCoche.getNivelDep() + " litros");
         System.out.println("----------------");
-        Coche otroCoche = new Coche("Fiat",60,TipoCarburante.GASOLINA, TipoColor.NEGRO);
+        Coche otroCoche = new Coche("matricula",ruedas,"Fiat",60,TipoCarburante.GASOLINA, TipoColor.NEGRO);
         
         otroCoche.echarCarburante(10.0); //empezamos con medio deposito
 
@@ -47,7 +48,7 @@ public class Main {
 		miCoche.mostrarEstado();
 		
 		
-		CocheRally cocheChulo = new CocheRally ("MarcaBuena",90,TipoCarburante.ELECTRICO,"negro",120.0f);
+		CocheRally cocheChulo = new CocheRally ("matricula",ruedas,"MarcaBuena",90,TipoCarburante.ELECTRICO,TipoColor.AZUL);
 		cocheChulo.echarCarburante(45);
 		cocheChulo.setArrancado(true);
 		cocheChulo.acelerar();
