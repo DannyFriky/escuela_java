@@ -3,7 +3,7 @@ package poo;
 /**
  * @author Danny
  */
-public class Coche extends Vehiculo {
+public class Coche extends Vehiculo implements Rodable {
    
 	protected final int capacidadDeposito; //valor constante
     protected final TipoCarburante carburante; //valor constante
@@ -132,6 +132,11 @@ public class Coche extends Vehiculo {
 	@Override
 	public void aparcar() {
 		this.arrancado=false;
+	}
+
+	@Override
+	public void moverse() {
+		System.out.println("Movete boludo " + toString());
 	}
 
 

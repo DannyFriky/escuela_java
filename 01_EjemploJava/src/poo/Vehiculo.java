@@ -37,6 +37,13 @@ public abstract class Vehiculo {
 		return matricula;
 	}
 
-	
+		public void setArrancado(boolean arrancado) {
+		this.arrancado = arrancado;
+	}
+
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
+	}
+
 	
 }

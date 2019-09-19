@@ -5,6 +5,7 @@
  */
 package pruebas;
 
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -13,6 +14,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import poo.Coche;
 import poo.Moto;
+import poo.Pelota;
+import poo.Rodable;
 import poo.TipoCarburante;
 import poo.TipoColor;
 import poo.Vehiculo;
@@ -68,25 +71,40 @@ public class TestAbstractInterface {
 		
 		 };
 		byte ruedas2=2;
-		Vehiculo miMoto = new Moto(matricula,ruedas2 ,  marca,  capacidad,  carburante,  color);
-		miVehiculo.abrirPuerta();
-		miMoto.abrirPuerta();
-		
-		Coche miCoche = new Coche(matricula, ruedas, marca, capacidad, carburante, color);
-		miCoche.setArrancado(true);
-		miCoche.acelerar();
-		miCoche.acelerar();
-		miCoche.acelerar();
-		miCoche.acelerar();
-		System.out.println(miCoche);
-		miCoche.acelerar();
-		miCoche.acelerar();
-		miCoche.acelerar();
-		miCoche.acelerar();
-		miCoche.aparcar();
-		System.out.println(miCoche);
 
-		 
-	 
+		Moto miMoto = new Moto(matricula,ruedas2 ,  marca,  capacidad,  carburante,  color);
+//		miVehiculo.abrirPuerta();
+//		miMoto.abrirPuerta();
+//		miMoto.setArrancado(true);
+//		miMoto.acelerar();
+//		miMoto.setMatricula("aaaaa");
+//		miMoto.acelerar();
+		Coche miCoche = new Coche(matricula, ruedas, marca, capacidad, carburante, color);
+//		miCoche.setArrancado(true);
+//		miCoche.acelerar();
+//		miCoche.acelerar();
+//		miCoche.acelerar();
+//		miCoche.acelerar();
+//		System.out.println(miCoche);
+//		miCoche.acelerar();
+//		miCoche.acelerar();
+//		miCoche.acelerar();
+//		miCoche.acelerar();
+//		miCoche.aparcar();
+//		System.out.println(miCoche);
+		
+		miMoto.moverse();
+		miCoche.moverse();
+		Pelota balon = new Pelota();
+		ArrayList<Rodable> cosasQueRuedan = new ArrayList<>();
+		cosasQueRuedan.add(balon);
+		cosasQueRuedan.add(miMoto);
+		cosasQueRuedan.add(miCoche);
+		
+		for(Rodable rod : cosasQueRuedan){
+			rod.moverse();
+			
+		}
+
 	 }
 }

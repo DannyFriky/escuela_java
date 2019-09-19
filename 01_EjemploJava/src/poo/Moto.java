@@ -3,7 +3,7 @@ package poo;
 /**
  * @author Danny
  */
-public class Moto extends Vehiculo {
+public class Moto extends Vehiculo implements Rodable {
 	
 	private boolean pataLevantada;
 	protected final int capacidadDeposito; //valor constante
@@ -36,6 +36,7 @@ public class Moto extends Vehiculo {
 		if (arrancado) {
 			nivelDeposito -= 0.2;
 		}
+		System.out.println(this.matricula);
 
 	}
 
@@ -58,6 +59,17 @@ public class Moto extends Vehiculo {
 	public void aparcar() {
 		this.arrancado = false;
 		this.pataLevantada = true;
+	}
+
+	@Override
+	public byte getNumRuedas() {
+		
+		return this.numRuedas;
+	}
+
+	@Override
+	public void moverse() {
+		System.out.println("Movete boluda "+ toString());
 	}
 
 }
