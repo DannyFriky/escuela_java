@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>EcmaScript6</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>EcmaScript6</div>
+
+        <script>
+            var totalAnimales = 0;
+            class Animal {
+                constructor(patas, nombre, especie) {
+                    this.patas = patas;
+                    this.nombre = nombre;
+                    this.especie = especie;
+                    totalAnimales++;
+                }
+                dimeTipo() {
+                    return this.especie + " es de tipo "
+                            + ((this.patas === 2) ? "bipedo" :
+                                    (this.patas === 4) ? "cuadrupedo" : "multipata");
+                }
+                static numAnimales() {
+                    return totalAnimales;
+                }
+            }
+
+            var miGato = new Animal(4, "Luna", "gato");
+
+            document.write("<p>" + miGato.nombre + " es " + miGato.dimeTipo() + "</p>");
+
+            let texto = `<br/>Texto
+                         en
+                         varias lineas. ${miGato.nombre} esta en el texto`;
+            document.write(texto);
+        </script>
+    </body>
+</html>

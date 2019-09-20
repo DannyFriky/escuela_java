@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>DOM en JS</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div id="unDiv">Document Object Model en Java Script</div>
+        <input type="button" id="elBoton" value="Pulsame" onclick="pulsar()"/>
+        <input type="button" id="elBoton2" value="Pulsame" />
+        <input type="text" id="miCajaTexto"/>
+        <script>
+           var elDiv = document.getElementById("unDiv");
+            elDiv.style="background-color: red";
+            elDiv.setAttribute("style","background-color: blue");
+            let parrafo = document.createElement("p");
+            let textoParr = document.createTextNode("es el texto");
+            parrafo.appendChild(textoParr);
+            elDiv.appendChild(parrafo);
+            
+            function pulsar(){
+                alert("Pulsaste wey");
+            }
+            let elBoton2 = document.getElementById("elBoton2");
+            //elBoton2.addEventListener("click",pulsar);
+            
+            elBoton2.onclick = function(){
+                let cajaTexto = document.getElementById("miCajaTexto");
+                alert("Has escrito " + cajaTexto.value);
+                
+            }
+            
+            
+        </script>
+    </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Ejemplos Obj</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>Ejemplos Obj</div>
+        <script>
+            var coche = new Object();
+            coche.matricula="4589 DFG";
+            coche.ruedas=4;
+            coche.carburante="GASOLINA";
+            coche.capacidad=60;
+            coche.nivelCar=coche.capacidad/2;
+            coche.color="gris";
+            alert("Info Coche1: "
+                    +"\nMatricula: "+coche.matricula
+                    +"\nRuedas: "+coche.ruedas
+                    +"\nCarburante: "+coche.carburante
+                    +"\nMaximo de: "+coche.capacidad+" Con actual: "+coche.nivelCar
+                    +"\nColor: "+coche.color);
+            
+            
+            
+            
+            /*
+var valor2 ={
+                "dni":"02154862S",
+                "nombre":"Fulanito",
+                "apellido":"De Tal",
+                "nacimiento":"he nacido",
+                                
+                
+            }; //nomenclatura JSON
+            
+            var persona = new Object();
+            persona.dni="01020125S";
+            persona.nombre="Fulanito";
+            persona.apellido="De Tal";
+            persona.edad=42;
+            persona.nacimiento=new Date();
+            var variable = "nacimiento";
+            alert("Info persona: "+persona.nombre+" "+persona.apellido
+                    +"\nDni: "+persona.dni
+                    +"\nFecha: "+persona.nacimiento);
+            
+            alert("Info persona2: "+valor2.nombre+" "+valor2.apellido
+                    +"\nDni: "+valor2.dni
+                    +"\nFecha: "+valor2[variable]);
+*/
+        </script>
+        
+    </body>
+    
+</html>
+

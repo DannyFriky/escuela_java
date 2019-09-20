@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Calculadora</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>Calculadora 1</div>
+        <nav>
+            <div>
+                <table style="width:50%" class="tabla">
+                    <tr>
+                        <th>Numero</th>
+                        <th>Operando</th>
+                        <th>Numero</th>
+                    </tr>
+                    <tr>
+                        <td><input type="number" id="primero"/></td>
+                        <td><input type="text" id="simbolo" /></td>
+                        <td>   <input type="number" id="segundo"/></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th><input type="button" id="calcular" value="Calcular" onclick="calcular()"/> </th>
+                        <th></th>
+                    </tr><tr>
+                        <th>Resultado : </th>
+                        <th><input type="text" id="resultado"/></th>
+                        <th></th>
+                    </tr>
+                </table> 
+            </div>
+
+        </nav>
+
+        <div>Calculadora 2 NO FUNCIONAL</div>
+        <nav>
+            <div>
+                <table style="width:50%" class="tabla2">
+                    <tr>
+                        <th><input type="button" id="siete" value="7" onclick="añadir(7)"/></th>
+                        <th><input type="button" id="ocho" value="8" onclick="añadir(8)"/></th>
+                        <th><input type="button" id="nueve" value="9" onclick="añadir(9)"/></th>
+                        <th><input type="button" id="menos" value="-" onclick="añadir('-')"/></th>
+                    </tr>
+                    <tr>
+                        <th><input type="button" id="cuatro" value="4" onclick="añadir(4)"/></th>
+                        <th><input type="button" id="cinco" value="5" onclick="añadir(5)"/></th>
+                        <th><input type="button" id="seis" value="6" onclick="añadir(6)"/></th>
+                        <th><input type="button" id="mas" value="+" onclick="añadir('+')"/></th>
+                    </tr>
+                    <tr>
+                        <th><input type="button" id="uno" value="1" onclick="añadir(1)"/></th>
+                        <th><input type="button" id="dos" value="2" onclick="añadir(2)"/></th>
+                        <th><input type="button" id="tres" value="3" onclick="añadir(3)"/></th>
+                        <th><input type="button" id="por" value="*" onclick="añadir('*')"/></th>
+                    </tr><tr>
+                        <th><input type="button" id="cero" value="0" onclick="añadir(0)"/></th>
+                        <th><input type="button" id="punto" value="." onclick="añadir('.')"/></th>
+                        <th><input type="button" id="entre" value="/" onclick="añadir('/')"/></th>
+                        <th><input type="button" id="calcula" value="CALCULAR" onclick="calcula()"/></th>
+                    </tr><tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th><input type="text" id="resultado2" /></th>
+                    </tr>
+                </table> 
+            </div>
+
+        </nav>
+        <script>
+            var nP = document.getElementById("primero");
+            var sim = document.getElementById("simbolo");
+            var nS = document.getElementById("segundo");
+            var res = document.getElementById("resultado");
+            var res2 = document.getElementById("resultado2");
+            var numero;
+            function calcular() {
+                if (sim.value === "+") //eval  REVISAR
+                    numero = Number(nP.value) + Number(nS.value);
+                if (sim.value === "-")
+                    numero = Number(nP.value) - Number(nS.value);
+                if (sim.value === "*")
+                    numero = Number(nP.value) * Number(nS.value);
+                if (sim.value === "/")
+                    numero = Number(nP.value) / Number(nS.value);
+
+                res.value = numero;
+            }
+            function añadir(valor){
+                res2.value= valor;
+            }
+
+
+        </script>
+    </body>
+</html>

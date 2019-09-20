@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>POO con JS</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>POO con JS</div>
+        <script>
+            
+            var Coche = function(matricula,marca){
+                this.matricula = matricula;
+                this.marca = marca;
+                this.arrancar = function(){
+                    document.write("<p>Arranca "+ this.marca+"</p>");
+                };
+            };
+            
+            Coche.prototype.arrancar2 = function(){
+                document.write("<p> arrancaDOS </p>");
+                if(true){
+                    var local ="Local";
+                }
+                document.write("<P> Existe aun "+local+"</p>");
+            }
+            
+            var miCoche= new Coche("1524asd","Skoda");
+            
+            document.write("<p>"+miCoche.marca+"</p>");
+            
+            miCoche.arrancar();
+            
+            var tuCoche = new Coche("6895SDE","Skoda2");
+            tuCoche.arrancar2();
+            
+            var miCocheDeFinDeSemana = {
+                matricula: "shsjsk22",
+                marca:"buggy",
+                autoconduccion: function(){
+                    document.write("<P> En el auto sin papa, nos vamos a pasear </p>");
+                }
+            }
+            
+            miCocheDeFinDeSemana.autoconduccion();
+        </script>
+    </body>
+</html>

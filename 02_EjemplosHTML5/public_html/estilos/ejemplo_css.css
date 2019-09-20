@@ -1,0 +1,84 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 20-sep-2019, 11:37:42
+    Author     : alumno
+*/
+*{
+    margin: 0px;
+    padding:0px;
+    
+}
+body{
+    background-color: #9E0905;
+}
+header{
+    background-color: #0191A5;
+    text-align: center;
+    padding: 10px
+                
+}
+.letra-azul{
+    color: blue;
+}
+
+.mucho-margen{
+    margin: 20px;
+}
+
+header nav{ /*descendiente*/
+/*    font-style: italic;*/
+}
+
+header nav{ /*hijo directo*/ 
+    font-style: italic;
+}
+
+div > *:hover{
+    background-color: white;
+    
+    
+}
+
+img{
+/*    display: block;*/
+    diplay: inline;
+}
+
+button{
+    width: 30%;
+    height: 30px;
+    background-color: transparent;
+    
+}
+button:hover{
+    background-color: gray;
+}
+
+.tabla {
+        text-align: center;
+        background-color: white;
+        border: black;  
+        border-style: solid;
+        border-collapse: collapse;
+}
+td{
+    border-style: solid;
+        border-collapse: collapse;
+}
+body{
+    display:flex; 
+  flex-direction:column; 
+}
+footer{
+     position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+}
