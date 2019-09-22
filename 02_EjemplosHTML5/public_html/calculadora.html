@@ -66,8 +66,8 @@ and open the template in the editor.
                         <th><input type="button" id="entre" value="/" onclick="añadir('/')"/></th>
                         <th><input type="button" id="calcula" value="CALCULAR" onclick="calcula()"/></th>
                     </tr><tr>
-                        <th></th>
-                        <th></th>
+                        <th><input type="button" id="borrarT" value="C" onclick="borraT()"/></th>
+                        <th><input type="button" id="borrar" value="BORRAR" onclick="borra()"/></th>
                         <th></th>
                         <th><input type="text" id="resultado2" /></th>
                     </tr>
@@ -81,21 +81,42 @@ and open the template in the editor.
             var nS = document.getElementById("segundo");
             var res = document.getElementById("resultado");
             var res2 = document.getElementById("resultado2");
+            var valorTemp ="";
             var numero;
             function calcular() {
-                if (sim.value === "+") //eval  REVISAR
+               /* if (sim.value === "+") //eval  REVISAR
                     numero = Number(nP.value) + Number(nS.value);
                 if (sim.value === "-")
                     numero = Number(nP.value) - Number(nS.value);
                 if (sim.value === "*")
                     numero = Number(nP.value) * Number(nS.value);
                 if (sim.value === "/")
-                    numero = Number(nP.value) / Number(nS.value);
+                    numero = Number(nP.value) / Number(nS.value);*/
+                if(sim.value !=="+" && sim.value !=="-" && sim.value !=="*" && sim.value !=="/"){
+                res.value = "Introduce el operando +, -, * o /";
 
-                res.value = numero;
+                } else {
+                res.value = eval(nP.value+sim.value+nS.value);
+
+                }
+
             }
             function añadir(valor){
-                res2.value= valor;
+                //valorTemp+= (""+valor);
+                res2.value+= (""+valor);
+            }
+            function calcula(){
+                res2.value = eval(res2.value);
+                
+            }
+            function borra(){
+                res2.value = res2.value.slice(0,-1);
+                
+            }
+
+            function borraT(){
+                res2.value = "";
+                
             }
 
 
