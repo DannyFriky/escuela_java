@@ -1,0 +1,20 @@
+.num, .oper { 
+    display: inline-block;
+    width: 60px; 
+    height: 40px; 
+    border-style: groove;
+    border-width: 3px;
+    background-color: ghostwhite;
+    margin: 3px;
+    text-align: center;
+    font-size: 2em;
+}
+.oper {
+    font-weight: bold;
+}
+.res {
+    width: 284px; 
+    height: 40px; 
+    border-width: 3px;
+    font-size: 2em;
+}

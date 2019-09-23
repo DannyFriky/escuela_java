@@ -9,6 +9,7 @@ and open the template in the editor.
         <title>Calculadora</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="jquery-3.4.1.js"></script>
     </head>
     <body>
         <div>Calculadora 1</div>
@@ -23,7 +24,7 @@ and open the template in the editor.
                     <tr>
                         <td><input type="number" id="primero"/></td>
                         <td><input type="text" id="simbolo" /></td>
-                        <td>   <input type="number" id="segundo"/></td>
+                        <td><input type="number" id="segundo"/></td>
                     </tr>
                     <tr>
                         <th></th>
@@ -39,13 +40,13 @@ and open the template in the editor.
 
         </nav>
 
-        
+
         <nav>
             <div>
                 <table style="width:350px ; background-color: #00cccc ; border-collapse: collapse;border: 5px solid #550000;" class="tabla2">
                     <tr >
                         <th colspan="4" style="background-color: #550000; color: white; ">Calculadora 2</th>
-                        
+
                     </tr>
                     <tr >
                         <th><input type="button" accesskey="7" id="siete" value="7" onclick="añadir(7)"/></th>
@@ -81,23 +82,23 @@ and open the template in the editor.
 
         </nav>
         <script>
-            
+
             //calculadora 1
-            var nP = document.getElementById("primero");
-            var sim = document.getElementById("simbolo");
-            var nS = document.getElementById("segundo");
-            var res = document.getElementById("resultado");
+            var nP = $("#primero");
+            var sim = $("#simbolo");
+            var nS = $("#segundo");
+            var res = $("#resultado");
             //calculadora 2
-            var res2 = document.getElementById("resultado2");
+            var res2 = $("#resultado2");
             var puedePunto = false;
             var podraPunto = true;
             var operador = true;
             function calcular() {
-                if (sim.value !== "+" && sim.value !== "-" && sim.value !== "*" && sim.value !== "/") {
-                    res.value = "Introduce el operando +, -, * o /";
+                if (sim.val() !== "+" && sim.val() !== "-" && sim.val() !== "*" && sim.val() !== "/") {
+                    res.val("Introduce el operando +, -, * o /");
 
                 } else {
-                    res.value = eval(nP.value + sim.value + nS.value);
+                    res.val(eval(nP.val() + sim.val() + nS.val()));
 
                 }
 
@@ -106,19 +107,20 @@ and open the template in the editor.
 
             function añadir(valor) {
                 if (valor === "." && puedePunto === true) {
-                    if(res2.value.slice(-1) === "+" || res2.value.slice(-1) === "-" || res2.value.slice(-1) === "*" || res2.value.slice(-1) === "/"){
-                         res2.value += ("" + 0);
+                    if (res2.val().slice(-1) === "+" || res2.val().slice(-1) === "-" || res2.val().slice(-1) === "*" || res2.val().slice(-1) === "/") {
+                        res2.val(res2.val() + ("" + 0));
                     }
-                    res2.value += ("" + valor);
+                    res2.val(res2.val() + ("" + valor));
                     puedePunto = false;
                 } else if ((valor === "+" || valor === "-" || valor === "*" || valor === "/") && operador === false) {
+                    //no hacer nada
                 } else if (valor !== ".") {
 
                     if (valor === "+" || valor === "-" || valor === "*" || valor === "/") {
                         podraPunto = true;
                         operador = false;
                         if (puedePunto === false) {
-                            res2.value += ("" + 0);
+                            res2.val(res2.val() += ("" + 0));
                         }
                     } else {
                         operador = true;
@@ -127,72 +129,71 @@ and open the template in the editor.
                             podraPunto = false;
                         }
                     }
-                    res2.value += ("" + valor);
+                    res2.val(res2.val() + ("" + valor));
                 }
             }
             function calcula() {
-                    
-                res2.value = eval(res2.value);
+
+                res2.val(eval(res2.val()));
 
             }
             function borra() {
 
-                if (res2.value.slice(-1) === ".") {
+                if (res2.val().slice(-1) === ".") {
 
                     puedePunto = true;
                 }
-                if (res2.value.slice(-1) === "+" || res2.value.slice(-1) === "-" || res2.value.slice(-1) === "*" || res2.value.slice(-1) === "/") {
+                if (res2.val().slice(-1) === "+" || res2.val().slice(-1) === "-" || res2.val().slice(-1) === "*" || res2.val().slice(-1) === "/") {
 
                     operador = true;
                 }
-                res2.value = res2.value.slice(0, -1);
+                res2.val(res2.val().slice(0, -1)); 
 
             }
 
             function borraT() {
-                res2.value = "";
+                res2.val("");
                 puedePunto = false;
                 podraPunto = true;
                 operador = true;
-                
 
             }
 
             document.addEventListener('keydown', (event) => {
                 const keyName = event.key;
-                var num =['cero','uno','dos','tres','cuatro','cinco','seis','siete','ocho','nueve'];
-                
+                var num = ['cero', 'uno', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete', 'ocho', 'nueve'];
+
                 switch (keyName) {
-                   /* case "0":
-                        cero.click();
-                        break;
-                    case "1":
-                        uno.click();
-                        break;
-                    case "2":
-                        dos.click();
-                        break;
-                    case "3":
-                        tres.click();
-                        break;
-                    case "4":
-                        cuatro.click();
-                        break;
-                    case "5":
-                        cinco.click();
-                        break;
-                    case "6":
-                        seis.click();
-                        break;
-                    case "7":
-                        siete.click();
-                        break;
-                    case "8":
-                        ocho.click();
-                        break;
-                    case "9":
-                        nueve.click();
-                        break;*/
+                    /* case "0":
+                     cero.click();
+                     break;
+                     case "1":
+                     uno.click();
+                     break;
+                     case "2":
+                     dos.click();
+                     break;
+                     case "3":
+                     tres.click();
+                     break;
+                     case "4":
+                     cuatro.click();
+                     break;
+                     case "5":
+                     cinco.click();
+                     break;
+                     case "6":
+                     seis.click();
+                     break;
+                     case "7":
+                     siete.click();
+                     break;
+                     case "8":
+                     ocho.click();
+                     break;
+                     case "9":
+                     nueve.click();
+                     break;*/
                     case "/":
                         entre.click();
                         break;
@@ -225,11 +226,12 @@ and open the template in the editor.
                         break;
 
                     default:
-                        eval(num[keyName]+".click();");
+                        eval(num[keyName] + ".click();");
                 }
 
             }
             );
         </script>
+
     </body>
 </html>
