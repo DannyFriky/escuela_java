@@ -39,10 +39,14 @@ and open the template in the editor.
 
         </nav>
 
-        <div>Calculadora 2</div>
+        
         <nav>
             <div>
-                <table style="width:350px ; background-color: #00cccc ; border-collapse: collapse;" class="tabla2">
+                <table style="width:350px ; background-color: #00cccc ; border-collapse: collapse;border: 5px solid #550000;" class="tabla2">
+                    <tr >
+                        <th colspan="4" style="background-color: #550000; color: white; ">Calculadora 2</th>
+                        
+                    </tr>
                     <tr >
                         <th><input type="button" accesskey="7" id="siete" value="7" onclick="añadir(7)"/></th>
                         <th><input type="button" accesskey="8" id="ocho" value="8" onclick="añadir(8)"/></th>
@@ -70,20 +74,21 @@ and open the template in the editor.
                         <th style ="background-color: #006666"><input type="button" accesskey="e" id="borrar" value="BORRAR" onclick="borra()"/></th>
                         <th style ="background-color: #006666"><input type="button" accesskey="(" id="paren1" value="(" onclick="añadir('(')"/>
                             <input type="button" accesskey=")" id="paren2" value=")" onclick="añadir(')')"/></th>
-                        <th style ="background-color: #006666"><input type="text" id="resultado2" /></th>
+                        <th style ="background-color: #006666"><input type="text" id="resultado2" readonly/></th>
                     </tr>
                 </table> 
             </div>
 
         </nav>
         <script>
+            
+            //calculadora 1
             var nP = document.getElementById("primero");
             var sim = document.getElementById("simbolo");
             var nS = document.getElementById("segundo");
             var res = document.getElementById("resultado");
+            //calculadora 2
             var res2 = document.getElementById("resultado2");
-            var valorTemp = "";
-            var numero;
             var puedePunto = false;
             var podraPunto = true;
             var operador = true;
@@ -153,8 +158,10 @@ and open the template in the editor.
 
             document.addEventListener('keydown', (event) => {
                 const keyName = event.key;
+                var num =['cero','uno','dos','tres','cuatro','cinco','seis','siete','ocho','nueve'];
+                
                 switch (keyName) {
-                    case "0":
+                   /* case "0":
                         cero.click();
                         break;
                     case "1":
@@ -183,7 +190,7 @@ and open the template in the editor.
                         break;
                     case "9":
                         nueve.click();
-                        break;
+                        break;*/
                     case "/":
                         entre.click();
                         break;
@@ -216,6 +223,7 @@ and open the template in the editor.
                         break;
 
                     default:
+                        eval(num[keyName]+".click();");
                 }
 
             }
