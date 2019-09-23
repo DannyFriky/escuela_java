@@ -39,37 +39,38 @@ and open the template in the editor.
 
         </nav>
 
-        <div>Calculadora 2 NO FUNCIONAL</div>
+        <div>Calculadora 2</div>
         <nav>
             <div>
-                <table style="width:50%" class="tabla2">
-                    <tr>
-                        <th><input type="button" id="siete" value="7" onclick="añadir(7)"/></th>
-                        <th><input type="button" id="ocho" value="8" onclick="añadir(8)"/></th>
-                        <th><input type="button" id="nueve" value="9" onclick="añadir(9)"/></th>
-                        <th><input type="button" id="menos" value="-" onclick="añadir('-')"/></th>
+                <table style="width:350px ; background-color: #00cccc ; border-collapse: collapse;" class="tabla2">
+                    <tr >
+                        <th><input type="button" accesskey="7" id="siete" value="7" onclick="añadir(7)"/></th>
+                        <th><input type="button" accesskey="8" id="ocho" value="8" onclick="añadir(8)"/></th>
+                        <th><input type="button" accesskey="9" id="nueve" value="9" onclick="añadir(9)"/></th>
+                        <th style ="background-color: #006666"><input type="button" accesskey="-" id="menos" value="-" onclick="añadir('-')"/></th>
                     </tr>
                     <tr>
-                        <th><input type="button" id="cuatro" value="4" onclick="añadir(4)"/></th>
-                        <th><input type="button" id="cinco" value="5" onclick="añadir(5)"/></th>
-                        <th><input type="button" id="seis" value="6" onclick="añadir(6)"/></th>
-                        <th><input type="button" id="mas" value="+" onclick="añadir('+')"/></th>
+                        <th><input type="button" accesskey="4" id="cuatro" value="4" onclick="añadir(4)"/></th>
+                        <th><input type="button" accesskey="5" id="cinco" value="5" onclick="añadir(5)"/></th>
+                        <th><input type="button" accesskey="6" id="seis" value="6" onclick="añadir(6)"/></th>
+                        <th style ="background-color: #006666"><input type="button" accesskey="+" id="mas" value="+" onclick="añadir('+')"/></th>
                     </tr>
                     <tr>
-                        <th><input type="button" id="uno" value="1" onclick="añadir(1)"/></th>
-                        <th><input type="button" id="dos" value="2" onclick="añadir(2)"/></th>
-                        <th><input type="button" id="tres" value="3" onclick="añadir(3)"/></th>
-                        <th><input type="button" id="por" value="*" onclick="añadir('*')"/></th>
+                        <th><input type="button" accesskey="1" id="uno" value="1" onclick="añadir(1)"/></th>
+                        <th><input type="button" accesskey="2" id="dos" value="2" onclick="añadir(2)"/></th>
+                        <th><input type="button" accesskey="3" id="tres" value="3" onclick="añadir(3)"/></th>
+                        <th style ="background-color: #006666"><input type="button" accesskey="*" id="por" value="*" onclick="añadir('*')"/></th>
                     </tr><tr>
-                        <th><input type="button" id="cero" value="0" onclick="añadir(0)"/></th>
-                        <th><input type="button" id="punto" value="." onclick="añadir('.')"/></th>
-                        <th><input type="button" id="entre" value="/" onclick="añadir('/')"/></th>
-                        <th><input type="button" id="calcula" value="CALCULAR" onclick="calcula()"/></th>
+                        <th><input type="button" accesskey="0" id="cero" value="0" onclick="añadir(0)"/></th>
+                        <th><input type="button" accesskey="." id="punto" value="." onclick="añadir('.')"/></th>
+                        <th style ="background-color: #006666"><input type="button" accesskey="/" id="entre" value="/" onclick="añadir('/')"/></th>
+                        <th style ="background-color: #006666"><input type="button" accesskey="c" id="calculaT" value="CALCULAR" onclick="calcula()"/></th>
                     </tr><tr>
-                        <th><input type="button" id="borrarT" value="C" onclick="borraT()"/></th>
-                        <th><input type="button" id="borrar" value="BORRAR" onclick="borra()"/></th>
-                        <th></th>
-                        <th><input type="text" id="resultado2" /></th>
+                        <th style ="background-color: #006666"><input type="button" accesskey="q" id="borrarT" value="C" onclick="borraT()"/></th>
+                        <th style ="background-color: #006666"><input type="button" accesskey="e" id="borrar" value="BORRAR" onclick="borra()"/></th>
+                        <th style ="background-color: #006666"><input type="button" accesskey="(" id="paren1" value="(" onclick="añadir('(')"/>
+                            <input type="button" accesskey=")" id="paren2" value=")" onclick="añadir(')')"/></th>
+                        <th style ="background-color: #006666"><input type="text" id="resultado2" /></th>
                     </tr>
                 </table> 
             </div>
@@ -81,45 +82,144 @@ and open the template in the editor.
             var nS = document.getElementById("segundo");
             var res = document.getElementById("resultado");
             var res2 = document.getElementById("resultado2");
-            var valorTemp ="";
+            var valorTemp = "";
             var numero;
+            var puedePunto = false;
+            var podraPunto = true;
+            var operador = true;
             function calcular() {
-               /* if (sim.value === "+") //eval  REVISAR
-                    numero = Number(nP.value) + Number(nS.value);
-                if (sim.value === "-")
-                    numero = Number(nP.value) - Number(nS.value);
-                if (sim.value === "*")
-                    numero = Number(nP.value) * Number(nS.value);
-                if (sim.value === "/")
-                    numero = Number(nP.value) / Number(nS.value);*/
-                if(sim.value !=="+" && sim.value !=="-" && sim.value !=="*" && sim.value !=="/"){
-                res.value = "Introduce el operando +, -, * o /";
+                if (sim.value !== "+" && sim.value !== "-" && sim.value !== "*" && sim.value !== "/") {
+                    res.value = "Introduce el operando +, -, * o /";
 
                 } else {
-                res.value = eval(nP.value+sim.value+nS.value);
+                    res.value = eval(nP.value + sim.value + nS.value);
 
                 }
 
             }
-            function añadir(valor){
-                //valorTemp+= (""+valor);
-                res2.value+= (""+valor);
+
+
+            function añadir(valor) {
+                if (valor === "." && puedePunto === true) {
+                    if(res2.value.slice(-1) === "+" || res2.value.slice(-1) === "-" || res2.value.slice(-1) === "*" || res2.value.slice(-1) === "/"){
+                         res2.value += ("" + 0);
+                    }
+                    res2.value += ("" + valor);
+                    puedePunto = false;
+                } else if ((valor === "+" || valor === "-" || valor === "*" || valor === "/") && operador === false) {
+                } else if (valor !== ".") {
+
+                    if (valor === "+" || valor === "-" || valor === "*" || valor === "/") {
+                        podraPunto = true;
+                        operador = false;
+                        if (puedePunto === false) {
+                            res2.value += ("" + 0);
+                        }
+                    } else {
+                        operador = true;
+                        if (podraPunto === true) {
+                            puedePunto = true;
+                            podraPunto = false;
+                        }
+                    }
+                    res2.value += ("" + valor);
+                }
             }
-            function calcula(){
+            function calcula() {
                 res2.value = eval(res2.value);
-                
+
             }
-            function borra(){
-                res2.value = res2.value.slice(0,-1);
-                
+            function borra() {
+
+                if (res2.value.slice(-1) === ".") {
+
+                    puedePunto = true;
+                }
+                if (res2.value.slice(-1) === "+" || res2.value.slice(-1) === "-" || res2.value.slice(-1) === "*" || res2.value.slice(-1) === "/") {
+
+                    operador = true;
+                }
+                res2.value = res2.value.slice(0, -1);
+
             }
 
-            function borraT(){
+            function borraT() {
                 res2.value = "";
-                
+                puedePunto = false;
+                podraPunto = true;
+                operador = true;
+
             }
 
+            document.addEventListener('keydown', (event) => {
+                const keyName = event.key;
+                switch (keyName) {
+                    case "0":
+                        cero.click();
+                        break;
+                    case "1":
+                        uno.click();
+                        break;
+                    case "2":
+                        dos.click();
+                        break;
+                    case "3":
+                        tres.click();
+                        break;
+                    case "4":
+                        cuatro.click();
+                        break;
+                    case "5":
+                        cinco.click();
+                        break;
+                    case "6":
+                        seis.click();
+                        break;
+                    case "7":
+                        siete.click();
+                        break;
+                    case "8":
+                        ocho.click();
+                        break;
+                    case "9":
+                        nueve.click();
+                        break;
+                    case "/":
+                        entre.click();
+                        break;
+                    case "*":
+                        por.click();
+                        break;
+                    case "-":
+                        menos.click();
+                        break;
+                    case "+":
+                        mas.click();
+                        break;
+                    case "Enter":
+                        calculaT.click();
+                        break;
+                    case ".":
+                        punto.click();
+                        break;
+                    case "b":
+                        borrar.click();
+                        break;
+                    case "r":
+                        borrarT.click();
+                        break;
+                    case "(":
+                        paren1.click();
+                        break;
+                    case ")":
+                        paren2.click();
+                        break;
 
+                    default:
+                }
+
+            }
+            );
         </script>
     </body>
 </html>
