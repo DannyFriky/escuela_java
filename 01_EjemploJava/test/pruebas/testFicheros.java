@@ -11,10 +11,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import threads.HiloCrearFichero;
-import threads.QuitaEs1;
-import threads.QuitaEs2;
-import threads.QuitaEs3;
+import practicaparejas.HiloCrearFichero;
+import practicaparejas.QuitaEs1;
+import practicaparejas.QuitaEs2;
+import practicaparejas.QuitaEs3;
 
 /**
  *

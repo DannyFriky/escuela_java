@@ -1,4 +1,4 @@
-package clasesjava;
+package practicaparejas;
 
 /**
  * @author Danny

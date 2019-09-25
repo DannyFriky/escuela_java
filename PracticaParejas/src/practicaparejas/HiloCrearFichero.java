@@ -1,6 +1,5 @@
-package threads;
+package practicaparejas;
 
-import clasesjava.StringAux;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;

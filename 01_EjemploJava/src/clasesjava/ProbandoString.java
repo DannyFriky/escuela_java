@@ -1,4 +1,7 @@
 package clasesjava;
+
+import practicaparejas.StringAux;
+
 /**
  * @author Danny
  */
