@@ -43,7 +43,7 @@ public class pruebaFicheros {
                 @Override
                 public void run(){
                     QuitaEs2 quitar2 = new QuitaEs2();
-                    HiloCrearFichero hFichero2 = new HiloCrearFichero("C:\\Users\\Formacion\\Desktop\\ESCUELA_JAVA\\escuela_java_practica", quitar2); 
+                    HiloCrearFichero hFichero2 = new HiloCrearFichero("texto_esp.txt", quitar2); 
                     hFichero2.leerFicheroEjem();
                 }
             };
@@ -52,7 +52,7 @@ public class pruebaFicheros {
                 @Override
                 public void run(){
                     QuitaEs3 quitar3 = new QuitaEs3();
-                    HiloCrearFichero hFichero3 = new HiloCrearFichero("C:\\Users\\Formacion\\Desktop\\ESCUELA_JAVA\\escuela_java_practica", quitar3); 
+                    HiloCrearFichero hFichero3 = new HiloCrearFichero("texto_esp.txt", quitar3); 
                     hFichero3.leerFicheroEjem();
                 }
             };
@@ -76,20 +76,22 @@ public class pruebaFicheros {
 		QuitaEs1 metodo1 = new QuitaEs1();
 		QuitaEs2 metodo2 = new QuitaEs2();
 		QuitaEs3 metodo3 = new QuitaEs3();
-		HiloCrearFichero hFich1 = new HiloCrearFichero("C:\\Users\\alumno\\Desktop\\ESCUELA_java\\escuela_java.git\\01_EjemploJava\\texto_esp.txt", metodo1);
-		HiloCrearFichero hFich2 = new HiloCrearFichero("C:\\Users\\alumno\\Desktop\\ESCUELA_java\\escuela_java.git\\01_EjemploJava\\texto_esp.txt", metodo2);
-		HiloCrearFichero hFich3 = new HiloCrearFichero("C:\\Users\\alumno\\Desktop\\ESCUELA_java\\escuela_java.git\\01_EjemploJava\\texto_esp.txt", metodo3);
+		HiloCrearFichero hFich1 = new HiloCrearFichero("texto_esp.txt", metodo1);
+		HiloCrearFichero hFich2 = new HiloCrearFichero("texto_esp.txt", metodo2);
+		HiloCrearFichero hFich3 = new HiloCrearFichero("texto_esp.txt", metodo3);
 		hFich1.leerFicheroEjem();
 		hFich2.leerFicheroEjem();
 		hFich3.leerFicheroEjem();
-		System.out.println(tiempoTotal(inicio) + "ms Tardados");
+
+		System.out.println(tiempoTotal(inicio) + "ms Tardados Secuencial");
+
 	}
-	
-	public double tiempoInicio(){
+
+	public double tiempoInicio() {
 		return new Date().getTime();
 	}
-	
-	public double tiempoTotal(double inicio){
+
+	public double tiempoTotal(double inicio) {
 		return new Date().getTime() - inicio;
 	}
 }
