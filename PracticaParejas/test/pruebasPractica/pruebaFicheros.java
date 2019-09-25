@@ -5,6 +5,7 @@
  */
 package pruebasPractica;
 
+import java.util.Date;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -32,6 +33,8 @@ public class pruebaFicheros {
 
 	@Test
 	public void testSecuencial() {
+		double inicio;
+		inicio = tiempoInicio();
 		QuitaEs1 metodo1 = new QuitaEs1();
 		QuitaEs2 metodo2 = new QuitaEs2();
 		QuitaEs3 metodo3 = new QuitaEs3();
@@ -41,6 +44,15 @@ public class pruebaFicheros {
 		hFich1.leerFicheroEjem();
 		hFich2.leerFicheroEjem();
 		hFich3.leerFicheroEjem();
+		System.out.println(tiempoTotal(inicio) + "ms Tardados");
 
+	}
+	
+	public double tiempoInicio(){
+		return new Date().getTime();
+	}
+	
+	public double tiempoTotal(double inicio){
+		return new Date().getTime() - inicio;
 	}
 }
