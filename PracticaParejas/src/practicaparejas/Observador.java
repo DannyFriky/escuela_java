@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * @author Danny
  */
-public class Observer implements Notificacion{
+public class Observador implements Notificacion{
 
 	@Override
 	public void acabar(double tiempo, String nombre) {

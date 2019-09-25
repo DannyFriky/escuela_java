@@ -5,7 +5,10 @@
  */
 package pruebasPractica;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.junit.After;
@@ -29,15 +32,34 @@ public class pruebaFicheros {
     @Test
     public void testLanzarFicheros(){
             double inicio;
-            inicio = tiempoInicio();
-			Observer observar = new Observer();
+			String nombre ="";
+			ArrayList<Object> objeto = new ArrayList<Object>();
+			inicio = tiempoInicio();
+			objeto.add(inicio);
+			objeto.add(nombre);
+			objeto.get(1);
+			
+			Observador observar = new Observador();
+			
+			Observer observa = new Observer(){
+				
+				@Override
+				public void update(Observable o, Object arg) {
+					ArrayList al1 = (ArrayList) arg;
+					double a;
+					a = new Date().getTime() - (double) al1.get(0);
+					System.out.println("Aviso de "+al1.get(1)+ "+ " + a);
+				}
+			};
             Thread procA = new Thread(){
                 @Override
                 public void run(){
+					objeto.set(1, "Hilo1");
                     QuitaEs1 quitar1 = new QuitaEs1();
                     HiloCrearFichero hFichero1 = new HiloCrearFichero("texto_esp.txt", quitar1); 
                     hFichero1.leerFicheroEjem();
-					observar.acabar(inicio, "Hilo 1");
+					//observar.acabar(inicio, "Hilo 1");
+					observa.update(hFichero1, objeto);
                 }
             };
 

@@ -5,13 +5,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Observable;
 import java.util.Random;
 import java.util.Scanner;
 
 /**
  * @author Danny
  */
-public class HiloCrearFichero {
+public class HiloCrearFichero extends Observable{
         interfazEspacios strAux;
         String ruta;
 
