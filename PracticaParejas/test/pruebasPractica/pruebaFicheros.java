@@ -21,6 +21,14 @@ import practicaparejas.QuitaEs3;
  * @author Formacion
  */
 public class pruebaFicheros {
+    
+    public pruebaFicheros() {
+    }
+    
+    @Test
+    public void testLanzarFicheros(){
+        
+    }
 
 	@Test
 	public void testSecuencial() {
