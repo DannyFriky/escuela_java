@@ -30,12 +30,14 @@ public class pruebaFicheros {
     public void testLanzarFicheros(){
             double inicio;
             inicio = tiempoInicio();
+			Observer observar = new Observer();
             Thread procA = new Thread(){
                 @Override
                 public void run(){
                     QuitaEs1 quitar1 = new QuitaEs1();
                     HiloCrearFichero hFichero1 = new HiloCrearFichero("texto_esp.txt", quitar1); 
                     hFichero1.leerFicheroEjem();
+					observar.acabar(inicio, "Hilo 1");
                 }
             };
 
@@ -45,6 +47,8 @@ public class pruebaFicheros {
                     QuitaEs2 quitar2 = new QuitaEs2();
                     HiloCrearFichero hFichero2 = new HiloCrearFichero("texto_esp.txt", quitar2); 
                     hFichero2.leerFicheroEjem();
+					
+					observar.acabar(inicio, "Hilo 2");
                 }
             };
             
@@ -54,6 +58,8 @@ public class pruebaFicheros {
                     QuitaEs3 quitar3 = new QuitaEs3();
                     HiloCrearFichero hFichero3 = new HiloCrearFichero("texto_esp.txt", quitar3); 
                     hFichero3.leerFicheroEjem();
+					
+					observar.acabar(inicio, "Hilo 3");
                 }
             };
             procA.start();
@@ -66,7 +72,7 @@ public class pruebaFicheros {
         } catch (InterruptedException ex) {
             Logger.getLogger(pruebaFicheros.class.getName()).log(Level.SEVERE, null, ex);
         }
-            System.out.println(tiempoTotal(inicio) + "ms Tardados");
+            System.out.println(tiempoTotal(inicio) + "ms Tardados Hilos Total");
     }
 
 	@Test

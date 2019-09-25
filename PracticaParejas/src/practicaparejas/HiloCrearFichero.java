@@ -69,8 +69,8 @@ public class HiloCrearFichero {
         try {
             escaner = new Scanner(fich);
             while (escaner.hasNextLine()) {
-                String linea = escaner.nextLine();
-                System.out.println(strAux.quitaEspacio(linea));
+                String linea = strAux.quitaEspacio(escaner.nextLine());
+                //System.out.println(linea);
             }
         } catch (Exception ex) {
                 System.out.println("Error en escritura : " + ex.getMessage());
