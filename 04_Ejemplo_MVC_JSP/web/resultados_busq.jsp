@@ -15,6 +15,7 @@
     <body>
         <h2>Usuario</h2>
         <% Persona pers = (Persona) session.getAttribute("resultadoBuscado");%>
+        
         <% if (pers != null ) {%>
         <label for="nombre">Nombre: </label>
         <input id="nombre" readonly value="<%=pers.getNombre()%>"/>

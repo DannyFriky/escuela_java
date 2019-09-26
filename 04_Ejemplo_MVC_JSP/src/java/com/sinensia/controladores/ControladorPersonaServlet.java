@@ -26,11 +26,17 @@ public class ControladorPersonaServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String nombre = request.getParameter("nombre"); //name del INPUT
 		//String edad = request.getParameter("edad");
-		
-		Persona p = ServicioPersona.getInstancia().getPersona(nombre);
-		request.getSession().setAttribute("resultadoBuscado", p);
-		request.getRequestDispatcher("resultados_busq.jsp").forward(request, response);
+		String mail = request.getParameter("mail2"); //name del INPUT
+		if (!nombre.equals("")) {
+			Persona p = ServicioPersona.getInstancia().getPersona(nombre);
+			request.getSession().setAttribute("resultadoBuscado", p);
+			request.getRequestDispatcher("resultados_busq.jsp").forward(request, response);
 
+		} else if (!mail.equals("")) {
+			Persona p = ServicioPersona.getInstancia().getMail(mail);
+			request.getSession().setAttribute("resultadoBuscado", p);
+			request.getRequestDispatcher("resultados_busq.jsp").forward(request, response);
+		}
 
 	}
 
@@ -50,14 +56,14 @@ public class ControladorPersonaServlet extends HttpServlet {
 
 			}
 		} catch (NumberFormatException ex) {
-			request.getSession().setAttribute("mensajeError","Error Numerico "+ ex.getMessage());
+			request.getSession().setAttribute("mensajeError", "Error Numerico " + ex.getMessage());
 			request.getRequestDispatcher("error.jsp").forward(request, response);
 
-		} catch (IllegalArgumentException ex){
-			request.getSession().setAttribute("mensajeError","Error en Campos "+ ex.getMessage());
+		} catch (IllegalArgumentException ex) {
+			request.getSession().setAttribute("mensajeError", "Error en Campos " + ex.getMessage());
 			request.getRequestDispatcher("error.jsp").forward(request, response);
-		}catch (Exception ex){
-			request.getSession().setAttribute("mensajeError","Error Generico "+ ex.getMessage());
+		} catch (Exception ex) {
+			request.getSession().setAttribute("mensajeError", "Error Generico " + ex.getMessage());
 			request.getRequestDispatcher("error.jsp").forward(request, response);
 		}
 

@@ -59,4 +59,13 @@ public class ServicioPersona {
 		}
 		return null;
 	}
+	
+	public Persona getMail(String mail) {
+		for (Persona p : personas) {
+			if (p.getMail().equalsIgnoreCase(mail)) {
+				return p;
+			}
+		}
+		return null;
+	}
 }

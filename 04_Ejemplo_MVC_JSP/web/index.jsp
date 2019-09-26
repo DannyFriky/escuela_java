@@ -33,8 +33,11 @@
             <table border='1'> 
                 <tr><td>Nombre</td> 
                     <td><input type='text' name='nombre' id='nombre'/></td>
-                <td><input type='submit' value='enviar'/></td> 
+                
                 </tr> 
+                <tr><td>Mail</td> 
+                    <td><input type='text' name='mail2' id='mail2'/></td>
+                <td><input type='submit' value='enviar'/></td> 
 
             </table> 
             
