@@ -21,7 +21,7 @@
                 <tr><td>Edad</td> 
                     <td><input type='number' name='edad' id='edad'/></td></tr> 
 
-            </table> 
+            </table>  
             <input type='submit' value='enviar'/>
         </form>
         
