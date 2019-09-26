@@ -1,20 +1,41 @@
 package com.sinensia.modelo;
 
-/**Esta clase es un POJO (Plain Old Java Object)
- * Clases sin lógica, cin herencia (o poco de...)
- * Suelen corresponder a una ENTIDAD
+/**
+ * Esta clase es un POJO (Plain Old Java Object) Clases sin lógica, cin herencia
+ * (o poco de...) Suelen corresponder a una ENTIDAD
+ *
  * @author Danny
  */
 public class Persona {
 
 	private int edad;
 	private String nombre;
+	private String mail;
+	private String pass;
 
-	public Persona(int edad, String nombre) {
+	public Persona(int edad, String nombre, String mail, String pass) {
 		this.edad = edad;
 		this.nombre = nombre;
+		this.mail = mail;
+		this.pass = pass;
 	}
-	
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	public String getPass() {
+		return pass;
+	}
+
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+
 	public int getEdad() {
 		return edad;
 	}
@@ -22,8 +43,6 @@ public class Persona {
 	public void setEdad(int edad) {
 		this.edad = edad;
 	}
-
-
 
 	public String getNombre() {
 		return nombre;

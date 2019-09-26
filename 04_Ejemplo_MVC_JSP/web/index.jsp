@@ -20,7 +20,10 @@
                     <td><input type='text' name='nombre' id='nombre'/></td></tr> 
                 <tr><td>Edad</td> 
                     <td><input type='number' name='edad' id='edad'/></td></tr> 
-
+                <tr><td>Mail</td> 
+                    <td><input type='text' name='mail' id='mail'/></td></tr> 
+                <tr><td>Password</td> 
+                    <td><input type='password' name='pass' id='pass'/></td></tr> 
             </table>  
             <input type='submit' value='enviar'/>
         </form>

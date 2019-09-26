@@ -39,8 +39,10 @@ public class ControladorPersonaServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String nombre = request.getParameter("nombre"); //name del INPUT
 		String edad = request.getParameter("edad");
+		String mail = request.getParameter("mail"); //name del INPUT
+		String pass = request.getParameter("pass");
 		try {
-			Persona p = ServicioPersona.getInstancia().addPersonas(nombre, edad);
+			Persona p = ServicioPersona.getInstancia().addPersonas(nombre, edad, mail, pass);
 			if (p == null) {
 				request.getRequestDispatcher("error.jsp").forward(request, response);
 			} else {

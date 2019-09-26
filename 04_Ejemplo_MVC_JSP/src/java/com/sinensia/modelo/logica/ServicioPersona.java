@@ -25,7 +25,7 @@ public class ServicioPersona {
 	}
 	private ArrayList<Persona> personas;
 
-	public Persona addPersonas(String nombre, String edad)
+	public Persona addPersonas(String nombre, String edad, String mail, String pass)
 			throws NumberFormatException, IOException, IllegalArgumentException {
 
 		int intEdad = Integer.parseInt(edad);
@@ -42,7 +42,7 @@ public class ServicioPersona {
 				throw new IllegalArgumentException("La edad debe ser mayor que 12");
 
 			} else {
-				Persona p = new Persona(intEdad, nombre);
+				Persona p = new Persona(intEdad, nombre, mail,pass);
 				personas.add(p);
 				return p;
 			}
