@@ -108,8 +108,13 @@ public class pruebaFicheros {
 		HiloCrearFichero hFich2 = new HiloCrearFichero("texto_esp.txt", metodo2);
 		HiloCrearFichero hFich3 = new HiloCrearFichero("texto_esp.txt", metodo3);
 		hFich1.leerFicheroEjem();
+				System.out.println(tiempoTotal(inicio) + "ms Tardados Secuencial 1");
+
 		hFich2.leerFicheroEjem();
+				System.out.println(tiempoTotal(inicio) + "ms Tardados Secuencial 2");
+
 		hFich3.leerFicheroEjem();
+		System.out.println(tiempoTotal(inicio) + "ms Tardados Secuencial 3");
 
 		System.out.println(tiempoTotal(inicio) + "ms Tardados Secuencial");
 
