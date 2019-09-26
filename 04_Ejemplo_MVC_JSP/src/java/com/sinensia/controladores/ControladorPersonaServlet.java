@@ -9,6 +9,7 @@ import com.sinensia.modelo.Persona;
 import com.sinensia.modelo.logica.ServicioPersona;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,8 +29,17 @@ public class ControladorPersonaServlet extends HttpServlet {
 		//String edad = request.getParameter("edad");
 		String mail = request.getParameter("mail2"); //name del INPUT
 		if (!nombre.equals("")) {
-			Persona p = ServicioPersona.getInstancia().getPersona(nombre);
-			request.getSession().setAttribute("resultadoBuscado", p);
+
+			String[] nombresV = nombre.split(",");
+			ArrayList<Persona> arrayP = new ArrayList<Persona>();
+			int i;
+			for (i = 0; i < nombresV.length; i++) {
+				Persona p = ServicioPersona.getInstancia().getPersona(nombresV[i]);
+				arrayP.add(p);
+			}
+			
+			request.getSession().setAttribute("resultadoBuscado", arrayP);
+
 			request.getRequestDispatcher("resultados_busq.jsp").forward(request, response);
 
 		} else if (!mail.equals("")) {

@@ -4,6 +4,7 @@
     Author     : alumno
 --%>
 
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.sinensia.modelo.Persona"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,14 +15,28 @@
     </head>
     <body>
         <h2>Usuario</h2>
-        <% Persona pers = (Persona) session.getAttribute("resultadoBuscado");%>
+     
+
+        <% ArrayList<Persona> pers =(ArrayList)session.getAttribute("resultadoBuscado") ;
         
-        <% if (pers != null ) {%>
+
+        
+        %>
+        
+        <% if (pers != null ) {
+        for(int i =0;i<pers.size();i++){
+            if(pers.get(i)!=null){
+        %>
+        <br/>
         <label for="nombre">Nombre: </label>
-        <input id="nombre" readonly value="<%=pers.getNombre()%>"/>
+        <input id="nombre" readonly value="<%=pers.get(i).getNombre()%>"/>
         <label for="edad">Edad </label>
-        <input id="edad" readonly value="<%=pers.getEdad()%>"/>
-        <% } else{%>
+        <input id="edad" readonly value="<%=pers.get(i).getEdad()%>"/>
+        <label for="mail">Mail </label>
+        <input id="mail" readonly value="<%=pers.get(i).getMail()%>"/>
+        <label for="pass">Contraseña </label>
+        <input id="pass" readonly value="<%=pers.get(i).getPass()%>"/>
+        <% } }}else {%>
         <span style="color: red">
             No se han encontrado personas
         </span>
