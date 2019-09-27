@@ -117,11 +117,13 @@ public class ControladorPersonaServlet extends HttpServlet {
 
 				String[] nombresV = nombre.split(",");
 				int i;
+				ArrayList<Boolean> arrayBorrar = new ArrayList<Boolean>();
 				for (i = 0; i < nombresV.length; i++) {
 					p = ServicioPersona.getInstancia().borrarPersona(nombresV[i]);
+					arrayBorrar.add(p);
 				}
 
-				request.getSession().setAttribute("resultadoBorrar", p);
+				request.getSession().setAttribute("resultadoBorrar", arrayBorrar);
 
 				request.getRequestDispatcher("borrado.jsp").forward(request, response);
 

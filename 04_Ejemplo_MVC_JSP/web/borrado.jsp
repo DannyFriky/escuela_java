@@ -3,7 +3,7 @@
     Created on : 27-sep-2019, 11:53:41
     Author     : alumno
 --%>
-
+<%@page import="java.util.ArrayList" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,15 +13,15 @@
     </head>
     <body>
         <h1>Borrar usuario</h1>
-		<% boolean borr =(boolean)session.getAttribute("resultadoBorrar") ; %>
+		<% ArrayList<Boolean> borr =(ArrayList<Boolean>)session.getAttribute("resultadoBorrar") ; %>
 		
 		<%
-			if(borr == true){
+			
 				
 		%>
 			<span style="color:green"> Usuario borrado </span>
 		<%
-			}else{
+			
 		%>
 			<span style="color: red"> Usuario NO borrado </span>
 		<%
