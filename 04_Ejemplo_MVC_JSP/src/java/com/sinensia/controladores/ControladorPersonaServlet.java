@@ -116,7 +116,6 @@ public class ControladorPersonaServlet extends HttpServlet {
 
 
 				String[] nombresV = nombre.split(",");
-				ArrayList<Persona> arrayP = new ArrayList<Persona>();
 				int i;
 				for (i = 0; i < nombresV.length; i++) {
 					p = ServicioPersona.getInstancia().borrarPersona(nombresV[i]);
