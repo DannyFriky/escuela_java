@@ -111,6 +111,7 @@ public class ControladorPersonaServlet extends HttpServlet {
 
 		}else if (met.compareTo("borrar") == 0) {
 			String nombre = request.getParameter("nombre"); //name del INPUT
+			boolean p = false;
 			if (!nombre.equals("")) {
 
 
@@ -118,11 +119,10 @@ public class ControladorPersonaServlet extends HttpServlet {
 				ArrayList<Persona> arrayP = new ArrayList<Persona>();
 				int i;
 				for (i = 0; i < nombresV.length; i++) {
-					boolean p = ServicioPersona.getInstancia().borrarPersona(nombresV[i]);
-					
+					p = ServicioPersona.getInstancia().borrarPersona(nombresV[i]);
 				}
 
-				request.getSession().setAttribute("resultadoBuscado", arrayP);
+				request.getSession().setAttribute("resultadoBorrar", p);
 
 				request.getRequestDispatcher("borrado.jsp").forward(request, response);
 

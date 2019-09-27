@@ -13,6 +13,19 @@
     </head>
     <body>
         <h1>Borrar usuario</h1>
-		<span style="color:green"> Usuario borrado </span>
+		<% boolean borr =(boolean)session.getAttribute("resultadoBorrar") ; %>
+		
+		<%
+			if(borr == true){
+				
+		%>
+			<span style="color:green"> Usuario borrado </span>
+		<%
+			}else{
+		%>
+			<span style="color: red"> Usuario NO borrado </span>
+		<%
+			}
+		%>
     </body>
 </html>
