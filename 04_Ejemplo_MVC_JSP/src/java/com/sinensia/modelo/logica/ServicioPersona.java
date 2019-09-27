@@ -68,4 +68,20 @@ public class ServicioPersona {
 		}
 		return null;
 	}
+	
+	
+	public boolean borrarPersona(String nombre){
+		Persona perElim = null;
+		for (Persona p : personas){
+			if(p.getNombre().equalsIgnoreCase(nombre)){
+				perElim = p;
+			}
+		}
+		if(perElim == null){
+			return false;
+		}else{
+			personas.remove(perElim);
+			return true;
+		}
+	}
 }

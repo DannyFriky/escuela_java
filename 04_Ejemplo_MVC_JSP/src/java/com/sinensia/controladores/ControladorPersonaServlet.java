@@ -84,7 +84,21 @@ public class ControladorPersonaServlet extends HttpServlet {
 		} else if (met.compareTo("modificar") == 0) {
 
 		}else if (met.compareTo("borrar") == 0) {
+			String nombre = request.getParameter("nombre"); //name del INPUT
+			if (!nombre.equals("")) {
 
+				String[] nombresV = nombre.split(",");
+				ArrayList<Persona> arrayP = new ArrayList<Persona>();
+				int i;
+				for (i = 0; i < nombresV.length; i++) {
+					
+				}
+
+				request.getSession().setAttribute("resultadoBuscado", arrayP);
+
+				request.getRequestDispatcher("resultados_busq.jsp").forward(request, response);
+
+			}
 		}
 
 	}
