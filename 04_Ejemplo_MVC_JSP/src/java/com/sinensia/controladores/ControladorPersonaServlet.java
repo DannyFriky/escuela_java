@@ -118,12 +118,13 @@ public class ControladorPersonaServlet extends HttpServlet {
 				ArrayList<Persona> arrayP = new ArrayList<Persona>();
 				int i;
 				for (i = 0; i < nombresV.length; i++) {
+					boolean p = ServicioPersona.getInstancia().borrarPersona(nombresV[i]);
 					
 				}
 
 				request.getSession().setAttribute("resultadoBuscado", arrayP);
 
-				request.getRequestDispatcher("resultados_busq.jsp").forward(request, response);
+				request.getRequestDispatcher("borrado.jsp").forward(request, response);
 
 			}
 		}
