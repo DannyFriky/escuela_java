@@ -10,6 +10,7 @@ import com.sinensia.modelo.logica.ServicioPersona;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,25 +32,26 @@ public class ControladorPersonaServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String met = request.getParameter("metodo");
-		if (met.compareTo("anadir") == 0) {
-			String nombre = request.getParameter("nombre"); //name del INPUT
-			String edad = request.getParameter("edad");
-			String mail = request.getParameter("mail"); //name del INPUT
-			String pass = request.getParameter("pass");
+		
+		Map mapa = request.getParameterMap();
+		String[] met = (String[]) mapa.get("metodo");
+		
+		
+
+		
+
+		if (met[0].compareTo("anadir") == 0) {
 
 			try {
-				Persona p = ServicioPersona.getInstancia().addPersonas(nombre, edad, mail, pass);
+				Persona p = ServicioPersona.getInstancia().addPersonas(mapa);
 				if (p == null) {
 					request.getRequestDispatcher("error.jsp").forward(request, response);
 				} else {
 					request.getRequestDispatcher("exito.jsp").forward(request, response);
-
 				}
 			} catch (NumberFormatException ex) {
 				request.getSession().setAttribute("mensajeError", "Error Numerico " + ex.getMessage());
 				request.getRequestDispatcher("error.jsp").forward(request, response);
-
 			} catch (IllegalArgumentException ex) {
 				request.getSession().setAttribute("mensajeError", "Error en Campos " + ex.getMessage());
 				request.getRequestDispatcher("error.jsp").forward(request, response);
@@ -57,66 +59,65 @@ public class ControladorPersonaServlet extends HttpServlet {
 				request.getSession().setAttribute("mensajeError", "Error Generico " + ex.getMessage());
 				request.getRequestDispatcher("error.jsp").forward(request, response);
 			}
-		} else if (met.compareTo("buscar") == 0) {
-			String nombre = request.getParameter("nombre"); //name del INPUT
-			//String edad = request.getParameter("edad");
-			String mail = request.getParameter("mail2"); //name del INPUT
+			
+		} else if (met[0].compareTo("buscar") == 0) {
 
-			if (!nombre.equals("")) {
+			String[] nombre = (String[]) mapa.get("nombre");
+			String[] mail = (String[]) mapa.get("mail2");
+			
+			if (!nombre[0].equals("")) {
 
-				String[] nombresV = nombre.split(",");
-				ArrayList<Persona> arrayP = new ArrayList<Persona>();
-				int i;
-				for (i = 0; i < nombresV.length; i++) {
-					Persona p = ServicioPersona.getInstancia().getPersona(nombresV[i]);
-					arrayP.add(p);
+				ArrayList<Persona> arrayP = ServicioPersona.getInstancia().buscarPersonaNombre(nombre[0]);
+
+				if (!arrayP.isEmpty()) {
+					request.getSession().setAttribute("resultadoBuscado", arrayP);
+					request.getRequestDispatcher("resultados_busq.jsp").forward(request, response);
+				} else {
+					request.getRequestDispatcher("error.jsp").forward(request, response);
 				}
 
-				request.getSession().setAttribute("resultadoBuscado", arrayP);
+			} else if (!mail[0].equals("")) {
 
-				request.getRequestDispatcher("resultados_busq.jsp").forward(request, response);
+				ArrayList<Persona> arrayP = ServicioPersona.getInstancia().buscarPersonaMail(mail[0]);
 
-			} else if (!mail.equals("")) {
-				Persona p = ServicioPersona.getInstancia().getMail(mail);
-				request.getSession().setAttribute("resultadoBuscado", p);
-				request.getRequestDispatcher("resultados_busq.jsp").forward(request, response);
+				if (!arrayP.isEmpty()) {
+					request.getSession().setAttribute("resultadoBuscado", arrayP);
+					request.getRequestDispatcher("resultados_busq.jsp").forward(request, response);
+				} else {
+					request.getRequestDispatcher("error.jsp").forward(request, response);
+				}
+
+			} else {
+				request.getRequestDispatcher("error.jsp").forward(request, response);
 			}
-		} else if (met.compareTo("modificar") == 0) {
-			String nombre = request.getParameter("nombre");
-			Persona p = ServicioPersona.getInstancia().getPersona(nombre);
+			
+		} else if (met[0].compareTo("modificar") == 0) {
+			String[] nombre = (String[]) mapa.get("nombre");
+			Persona p = ServicioPersona.getInstancia().getPersona(nombre[0]);
+			
 			if (p != null) {
 				request.getSession().setAttribute("resultadoModificar", p);
 				request.getRequestDispatcher("modificar.jsp").forward(request, response);
 			}
 
-		} else if (met.compareTo("modificado") == 0) {
-			String nombre = request.getParameter("nombre"); //name del INPUT
-			String edad = request.getParameter("edad");
-			String mail = request.getParameter("mail"); //name del INPUT
-			String pass = request.getParameter("pass");
-			String antiguo = request.getParameter("nombreA");
+		} else if (met[0].compareTo("modificado") == 0) {
 
-			int intEdad = Integer.parseInt(edad);
-			Persona p = ServicioPersona.getInstancia().getPersona(antiguo);
-			p.setNombre(nombre);
-			p.setEdad(intEdad);
-			p.setMail(mail);
-			p.setPass(pass);
+			ArrayList<Persona> arrayP = ServicioPersona.getInstancia().modificarPersona(mapa);
 
-				ArrayList<Persona> arrayP = new ArrayList<Persona>();
-				arrayP.add(p);
-			request.getSession().setAttribute("resultadoBuscado", arrayP);
-			request.getRequestDispatcher("resultados_busq.jsp").forward(request, response);
+			if (!arrayP.isEmpty()) {
+				request.getSession().setAttribute("resultadoBuscado", arrayP);
+				request.getRequestDispatcher("resultados_busq.jsp").forward(request, response);
 
+			} else {
+				request.getRequestDispatcher("error.jsp").forward(request, response);
+			}
 
-		}else if (met.compareTo("borrar") == 0) {
-			String nombre = request.getParameter("nombre"); //name del INPUT
+		} else if (met[0].compareTo("borrar") == 0) {
+			String[] nombre = (String[]) mapa.get("nombre");
 			boolean p = false;
-			if (!nombre.equals("")) {
+			if (!nombre[0].equals("")) {
 
-
-				String[] nombresV = nombre.split(",");
-				ArrayList<Persona> arrayP = new ArrayList<Persona>();
+				String[] nombresV = nombre[0].split(",");
 				int i;
 				for (i = 0; i < nombresV.length; i++) {
 					p = ServicioPersona.getInstancia().borrarPersona(nombresV[i]);
@@ -127,7 +128,9 @@ public class ControladorPersonaServlet extends HttpServlet {
 				request.getRequestDispatcher("borrado.jsp").forward(request, response);
 
 			}
+			
 		}
+		
 
 	}
 

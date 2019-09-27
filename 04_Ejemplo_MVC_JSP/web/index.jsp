@@ -8,11 +8,14 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="style/style.css"/>
         <title>Ejemplo MVC con JSP y Servlet</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
+        <h1 class="titulo">BASE DE DATOS DE STALKEO</h1>
+        <div class="tabla_1">
         <h2>Añadir Persona</h2>
         <form name='form1' method='post' action='./personas.do'> 
             <table border='1'> 
@@ -24,11 +27,12 @@
                     <td><input type='text' name='mail' id='mail'/></td></tr> 
                 <tr><td>Password</td> 
                     <td><input type='password' name='pass' id='pass'/>
-                    <input type='hidden' name='metodo' id='metodo' value='anadir'/></td></tr> 
+                        <input type='hidden' name='metodo' id='metodo' value='anadir'/></td></tr> 
             </table>  
-            <input type='submit' value='enviar'/>
+            <input type='submit' value='Añadir'/>
         </form>
-
+        </div>
+        <div class="tabla_2">
         <h2>Buscar Persona</h2>
         <form name='formBusq' method='post' action='./personas.do'> 
             <table border='1'> 
@@ -37,40 +41,14 @@
                 </tr> 
                 <tr><td>Mail</td> 
                     <td><input type='text' name='mail2' id='mail2'/>
-                    <input type='hidden' name='metodo' id='metodo' value='buscar'/></td>
-                    <td><input type='submit' value='enviar'/></td> 
+                        <input type='hidden' name='metodo' id='metodo' value='buscar'/></td>
+                    
 
             </table> 
-
+<input type='submit' value='Buscar'/>
         </form>
+        </div>
 
-        <h2>Modificar Persona</h2>
-        <form name='formMod' method='post' action='./personas.do'> 
-            <table border='1'> 
-                <tr><td>Nombre a modificar</td> 
-                    <td><input type='text' name='nombre' id='nombre'/>
-                        <input type='hidden' name='metodo' id='metodo' value='modificar'/>
-
-                    </td>
-                    <td><input type='submit' value='modificar'/></td> 
-                </tr> 
-            </table> 
-
-        </form>
-        
-        <h2>Borrar Persona</h2>
-        <form name='formMod' method='post' action='./personas.do'> 
-            <table border='1'> 
-                <tr><td>Nombre a borrar</td> 
-                    <td><input type='text' name='nombre' id='nombre'/>
-                        <input type='hidden' name='metodo' id='metodo' value='borrar'/>
-
-                    </td>
-                    <td><input type='submit' value='borrar'/></td> 
-                </tr> 
-            </table> 
-
-        </form>
     </body>
 </html>
 

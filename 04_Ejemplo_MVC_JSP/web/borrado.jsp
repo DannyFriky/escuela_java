@@ -27,5 +27,6 @@
 		<%
 			}
 		%>
+              <input type='button' value='volver' onclick="window.location.href='/Ejemplo_MVC_JSP/index.jsp'"/>
     </body>
 </html>

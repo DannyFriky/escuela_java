@@ -1,0 +1,28 @@
+*{
+        background-color: #ccccff;
+
+}
+.tabla_1{
+    float: left;
+    margin-left: 10%;
+}
+.tabla_2{
+    float:right;
+    margin-right: 20%;
+}
+div[class^="tabla"] {
+    color: #009999 ;
+    
+    
+}
+.titulo{
+    text-align:center;
+    background-color: #00cccc;
+    height: 100%;
+}
+td,table{
+     border-collapse: collapse;
+     border:3px solid;
+     border-color: #999999;
+
+}

@@ -32,6 +32,7 @@
         <input type='hidden' name ="nombreA" id="nombreA"  value="<%=persona.getNombre()%>"/>
         <input type='hidden' name='metodo' id='metodo' value='modificado'/>
         
+        
         <input type='submit' value='modificado'/>
 
         </form>
