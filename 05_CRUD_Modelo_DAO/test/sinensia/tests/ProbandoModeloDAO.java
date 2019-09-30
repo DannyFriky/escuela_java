@@ -93,9 +93,11 @@ public class ProbandoModeloDAO {
 			userSrv.delete(u1.getId());
 			userSrv.delete(u2.getId());
 			userSrv.delete(u3.getId());
-			userSrv.delete(u4.getId());
+			u4.setName("Danny");
+			u4.setAge(24);
+			u4 = userSrv.modify(u4);
 
-			assertEquals(totalUsersBefore, userSrv.getAll().size());
+			assertEquals(totalUsersBefore+1, userSrv.getAll().size());
 		} catch (SQLException ex) {
 			Logger.getLogger(ProbandoModeloDAO.class.getName()).log(Level.SEVERE, null, ex);
 			fail();

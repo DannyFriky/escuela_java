@@ -94,21 +94,39 @@ public class UserDAO_DerbyBD implements IUserDAO {
 
 	@Override
 	public boolean remove(int id) throws SQLException {
-		Connection con = DriverManager.getConnection(CONE_DB, USER_DB, PSSW_DB);
-
-		String sqlQuery = "DELETE FROM users WHERE id=?";
-		PreparedStatement prepStmt = con.prepareCall(sqlQuery);
-		prepStmt.setInt(1, id);
-		
-		
-		prepStmt.executeUpdate();
-		con.close();
+		try (Connection con = DriverManager.getConnection(CONE_DB, USER_DB, PSSW_DB)) {
+			String sqlQuery = "DELETE FROM users WHERE id=?";
+			PreparedStatement prepStmt = con.prepareCall(sqlQuery);
+			prepStmt.setInt(1, id);
+			
+			prepStmt.executeUpdate();
+		}
 
 		return true;
 	}
 
 	@Override
-	public boolean remove(User user) throws SQLException {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	public User modify(User user) throws SQLException {
+
+		try (Connection con = DriverManager.getConnection(CONE_DB, USER_DB, PSSW_DB)) {
+			String sqlQuery = "UPDATE users "
+					+ "SET email =?,"
+					+ "password =?,"
+					+ "name=?,"
+					+ "age=?"
+					+ "WHERE id=?";
+			PreparedStatement prepStmt = con.prepareCall(sqlQuery);
+			
+			prepStmt.setString(1, user.getEmail());
+			prepStmt.setString(2, user.getPassword());
+			prepStmt.setString(3, user.getName());
+			prepStmt.setInt(4, user.getAge());
+			prepStmt.setInt(5, user.getId());
+			
+			prepStmt.executeUpdate();
+		}
+
+		return user;
+
 	}
 }

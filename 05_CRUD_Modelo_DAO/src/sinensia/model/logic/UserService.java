@@ -43,4 +43,8 @@ public class UserService {
 	public void delete(int id) throws SQLException{
 		daoUsers.remove(id);
 	}
+	
+	public User modify(User user) throws SQLException{
+		return daoUsers.modify(user);
+	}
 }
