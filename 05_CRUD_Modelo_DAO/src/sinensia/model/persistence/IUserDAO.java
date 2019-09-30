@@ -1,5 +1,6 @@
 package sinensia.model.persistence;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import sinensia.model.User;
@@ -10,14 +11,18 @@ import sinensia.model.User;
  * and open the template in the editor.
  */
 
-/**
+/** Interfaz DAO para gestion de usuarios. Todas las sentencias 
+ *  pueden lanzar SWLException
  *
  * @author alumno
  */
 public interface IUserDAO {
 	
-	User create(User user);
+	User create(User user) throws SQLException;
 
-	List<User> getAll();
+	List<User> getAll() throws SQLException;
 	
+	boolean remove(int id) throws SQLException;
+	
+	boolean remove(User user) throws SQLException;
 }

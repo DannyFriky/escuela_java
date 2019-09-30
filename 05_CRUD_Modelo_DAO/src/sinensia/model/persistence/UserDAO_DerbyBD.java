@@ -2,6 +2,7 @@ package sinensia.model.persistence;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -35,52 +36,79 @@ public class UserDAO_DerbyBD implements IUserDAO {
 	}
 
 	@Override
-	public User create(User user) {
-		Connection con = null;
-		try {
-			con = DriverManager.getConnection(CONE_DB, USER_DB, PSSW_DB);
-			String sqlQuery = "INSERT INTO users (email,password,name,age) VALUES('"
-					+ user.getEmail() + "','"
-					+ user.getPassword() + "','"
-					+ user.getName() + "',"
-					+ user.getAge() + ")";
-			Statement stmt = con.createStatement();
-			stmt.executeUpdate(sqlQuery);
-			con.close();
-			return user;
+	public User create(User user) throws SQLException {
+		Connection con = DriverManager.getConnection(CONE_DB, USER_DB, PSSW_DB);
+		/*
+		String sqlQuery = "INSERT INTO users (email,password,name,age) VALUES('"+ user.getEmail() + "','"+ user.getPassword() + "','"+ user.getName() + "',"+ user.getAge() + ")";
+		Statement stmt = con.createStatement();
+		stmt.executeUpdate(sqlQuery);
+		 */
+		String sqlQuery = "INSERT INTO users (email,password,name,age) VALUES( ?, ?, ?, ?)";
+		PreparedStatement prepStmt = con.prepareCall(sqlQuery);
+		prepStmt.setString(1, user.getEmail());
+		prepStmt.setString(2, user.getPassword());
+		prepStmt.setString(3, user.getName());
+		prepStmt.setInt(4, user.getAge());
 
-		} catch (SQLException ex) {
-			Logger.getLogger(UserDAO_DerbyBD.class.getName()).log(Level.SEVERE, null, ex);
+		prepStmt.executeUpdate();
+
+		String sqlSelect = "SELECT id FROM users WHERE email=?";
+		PreparedStatement prepStmtSel = con.prepareCall(sqlSelect);
+		prepStmtSel.setString(1, user.getEmail());
+
+		ResultSet sol = prepStmtSel.executeQuery();
+
+		while (sol.next()) {
+			user.setId(sol.getInt("id"));
 		}
 
-		return null;
+		con.close();
+
+		return user;
+
 	}
 
 	@Override
-	public List<User> getAll() {
+	public List<User> getAll() throws SQLException {
 		//Si todo ha ido bien el mismo se encarga de hacer el close de la base de datos
 		try (Connection con = DriverManager.getConnection(CONE_DB, USER_DB, PSSW_DB)) {
-			
+
 			ArrayList<User> usersList = new ArrayList<>();
 			String sqlQuery = "SELECT id, email, password, name, age FROM users";
 			Statement stmt = con.createStatement();
 			ResultSet res = stmt.executeQuery(sqlQuery);
-			while(res.next()){
+			while (res.next()) {
 				int id = res.getInt("id");
 				String email = res.getString("email");
 				String password = res.getString("password");
 				String name = res.getString("name");
 				int age = res.getInt("age");
-				User newUser = new User(email,password,name,age);
+				User newUser = new User(email, password, name, age);
 				newUser.setId(id);
 				usersList.add(newUser);
 			}
 			return usersList;
-		} catch (Exception ex) {
-			Logger.getLogger(UserDAO_DerbyBD.class.getName()).log(Level.SEVERE, null, ex);
-
 		}
-		return null;
 
+	}
+
+	@Override
+	public boolean remove(int id) throws SQLException {
+		Connection con = DriverManager.getConnection(CONE_DB, USER_DB, PSSW_DB);
+
+		String sqlQuery = "DELETE FROM users WHERE id=?";
+		PreparedStatement prepStmt = con.prepareCall(sqlQuery);
+		prepStmt.setInt(1, id);
+		
+		
+		prepStmt.executeUpdate();
+		con.close();
+
+		return true;
+	}
+
+	@Override
+	public boolean remove(User user) throws SQLException {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 }
