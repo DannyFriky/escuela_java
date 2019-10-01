@@ -101,6 +101,8 @@ public class UserDAO_DerbyBD implements IUserDAO {
 			
 			prepStmt.executeUpdate();
 		}
+		
+		
 
 		return true;
 	}
