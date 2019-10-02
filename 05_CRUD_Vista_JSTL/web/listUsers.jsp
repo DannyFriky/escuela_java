@@ -17,19 +17,31 @@
     </head>
     <body>
         <h1>List Users</h1>
-                <form action="users.do" method="post">
-        <table>
+        
+        <c:if test="${ userLogged != null}">
             <c:forEach items="${usersList}" var="user">
-                <tr>
-                    <td>${user.id}</td>
-                    <td>${user.email}</td>
-                    <td>${user.password}</td>
-                    <td>${user.name}</td>
-                    <td>${user.age}</td>
-                </tr>
-                
-            </c:forEach>
+                <form action="users.do" method="post">
+                    <table>
+
+                        <tr>
+                            <td><input id="id" name="id" readonly size="4" value="${user.id}"/></td>
+                            <td><input id="email" name="email" type="text" size="25" value="${user.email}"/></td>
+                            <td><input id="password" name="password" type="text" size="25" value="${user.password}"/></td>
+                            <td><input id="name" name="name" type="text" size="30" value="${user.name}"/></td>
+                            <td><input id="age" name="age" type="text" size="3" value="${user.age}"/></td>
+                            <td><input name="method" type="submit" value="Delete"/></td>
+                            <td><input name="method" type="submit" value="Modify"/></td>
+                        </tr>
+
+
+
+                    </table>
                 </form>
-        </table>
+            </c:forEach>
+        </c:if>
+        <% if( session.getAttribute("userLogged") == null){%>
+             <a href="index.jsp">Loggeate</a>
+        <%}%>
+
     </body>
 </html>

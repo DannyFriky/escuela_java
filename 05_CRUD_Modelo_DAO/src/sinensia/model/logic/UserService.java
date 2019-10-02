@@ -36,15 +36,24 @@ public class UserService {
 
 	}
 
-	public List<User> getAll() throws SQLException{
+	public List<User> getAll() throws SQLException {
 		return daoUsers.getAll();
 	}
 
-	public void delete(int id) throws SQLException{
+	public void delete(int id) throws SQLException {
 		daoUsers.remove(id);
 	}
-	
-	public User modify(User user) throws SQLException{
+
+	public User modify(User user) throws SQLException {
 		return daoUsers.modify(user);
 	}
+
+	public boolean remove(int id) throws SQLException  {
+		return daoUsers.remove(id);
+	}
+	public User validateUser(String email, String password) throws SQLException {
+		return daoUsers.validateUser(email, password);
+	}
+	
+
 }

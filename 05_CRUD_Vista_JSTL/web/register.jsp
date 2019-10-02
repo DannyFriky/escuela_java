@@ -20,7 +20,9 @@
             <label for="age"> Age: </label>
             <input id="age" name="age" type="number" placeholder="Write your age" size="50" required="required" min="1" max="199"/><br/>
             
-            <input type="submit" value="Register"/>
+            <input id="method" name="method" type="submit" value="Register"/>
         </form>
+         <script src='js/md5.min.js'></script>
+        <script src='js/encrypt.js'></script>
     </body>
 </html>
