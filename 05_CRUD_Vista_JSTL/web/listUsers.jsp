@@ -17,6 +17,7 @@
     </head>
     <body>
         <h1>List Users</h1>
+                <form action="users.do" method="post">
         <table>
             <c:forEach items="${usersList}" var="user">
                 <tr>
@@ -26,7 +27,9 @@
                     <td>${user.name}</td>
                     <td>${user.age}</td>
                 </tr>
+                
             </c:forEach>
+                </form>
         </table>
     </body>
 </html>
