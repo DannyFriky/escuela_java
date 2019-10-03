@@ -9,11 +9,32 @@ and open the template in the editor.
         <title>Cliente Rest con Ajax</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     </head>
     <body>
         <h1>Cliente Rest con Ajax</h1>
-        <table id="data_table"></table>
+            <label for="id"> ID: </label>
+            <input id="id" name="id" type="text" readonly size="50" maxlength="255" required="required"/><br/>
+            
+            <label for="email"> Email: </label>
+            <input id="email" name="email" type="email" placeholder="Write your e-mail" size="50" maxlength="255" required="required"/><br/>
+            
+            <label for="age"> Age: </label>
+            <input id="age" name="age" type="number" placeholder="Write your age" size="50" required="required" min="1" max="199"/><br/>
+            
+            <label for="name"> Name: </label>
+            <input id="name" name="name" type="text" placeholder="Write your name" size="50" maxlength="255" required="required"/><br/>
+            
+            <label for="password"> Password: </label>
+            <input id="password" name="password" type="password" placeholder="Write your password" size="50" required="required" /><br/>
+            
+            <input id="btnDel" name="btnDel" type="submit" value="Delete"/> 
+            <input id="btnSend" name="btnSend" type="submit" value="Login"/>
         
-        <script src="js/ajaxRestClient.js"></script>
+        <div id="results__display"></div>
+
+        <table id="data_table"></table>
+        <script src="js/sendForm.js"></script>
+       
     </body>
 </html>

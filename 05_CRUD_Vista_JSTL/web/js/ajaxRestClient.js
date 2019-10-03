@@ -16,10 +16,9 @@ window.onload = function () {
             data_table.innerHTML = "";
             for (let user of objRespListUsers) {
                 data_table.innerHTML += `<tr>
-<td>${user.email}</td>
-<td>${user.name}</td>
-
-</tr>`;
+                                         <td>${user.email}</td>
+                                         <td>${user.name}</td>
+                                         </tr>`;
             }
         }
     };
