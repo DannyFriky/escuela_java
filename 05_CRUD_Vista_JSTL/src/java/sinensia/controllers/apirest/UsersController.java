@@ -48,12 +48,11 @@ public class UsersController extends HttpServlet {
 		} catch (SQLException ex) {
 			Logger.getLogger(UsersController.class.getName()).log(Level.SEVERE, null, ex);
 		}
-		
-		Gson gson = new Gson();
-String json = "{ \"borrado\": \"true\", \"mensaje\": EXITO }";
-JsonObject jsonObject = new JsonParser().parse(json).getAsJsonObject();
-		String textJson = gson.toJson("{'Borrado':'true','mensaje':'EXITO'}");
 
+		
+		String json = "{ \"borrado\": \"true\", \"mensaje\": EXITO }";
+		JsonObject jsonObject = new JsonParser().parse(json).getAsJsonObject();
+		
 		resp.getWriter().print(jsonObject);
 	}
 

@@ -1,0 +1,8 @@
+<p>Listado de heroes</p>
+
+<ul class="ul-heroes" >
+    <li *ngFor="let hero of heroes">
+        <span class="li-heroe">{{hero.id}}</span>{{hero.name}}
+        <img src={{hero.url}}  height="200" width="200"/>
+    </li>
+</ul>
