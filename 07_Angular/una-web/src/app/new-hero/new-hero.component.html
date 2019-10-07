@@ -1,0 +1,4 @@
+<input placeholder="Write the id" [(ngModel)]="newHeroId"/>
+<input placeholder="Write the name" [(ngModel)]="newHeroName"/>
+<input placeholder="Write the url" [(ngModel)]="newHeroUrl"/>
+<button (click) = "heroSrv.add({id : newHeroId, name : newHeroName, url : newHeroUrl})">Añadir</button>

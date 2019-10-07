@@ -1,0 +1,11 @@
+.grid{
+    display: inline-block;
+    width: 80%;
+    text-align: center;
+}
+
+.wid-25{
+    width: 25%;
+    border: 1px solid #cccccc;
+    display: inline-block;
+}
