@@ -41,6 +41,7 @@ public class UsersController extends HttpServlet {
 	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("application/json;charset=UTF-8");
 		String jsonUser = req.getReader().readLine();
+		setAccessControlHeader(resp);
 
 		User userObject = new Gson().fromJson(jsonUser, User.class);
 		try {
@@ -49,10 +50,9 @@ public class UsersController extends HttpServlet {
 			Logger.getLogger(UsersController.class.getName()).log(Level.SEVERE, null, ex);
 		}
 
-		
 		String json = "{ \"borrado\": \"true\", \"mensaje\": EXITO }";
 		JsonObject jsonObject = new JsonParser().parse(json).getAsJsonObject();
-		
+
 		resp.getWriter().print(jsonObject);
 	}
 
@@ -60,6 +60,7 @@ public class UsersController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("application/json;charset=UTF-8");
 		String jsonUser = req.getReader().readLine();
+		setAccessControlHeader(resp);
 		//String jsonUser = req.getParameter("json");
 		//String jsonUser ="{'email':'dani@gmail.com','edad':'32'}";
 
@@ -86,6 +87,7 @@ public class UsersController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		resp.setContentType("application/json;charset=UTF-8");
+		setAccessControlHeader(resp);
 		try {
 			List<User> userList = userSrv.getAll();
 			//serializamos el list en un JSON
@@ -99,6 +101,35 @@ public class UsersController extends HttpServlet {
 			resp.getWriter().print("{\"error\": \" "
 					+ ex.getMessage() + "\"");
 		}
+	}
+	
+	    @Override
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String jsonUser = req.getReader().readLine();
+        User userObject = new Gson().fromJson(jsonUser, User.class);
+		setAccessControlHeader(resp);
+        try { // Debe venir ya con el id
+            userObject = userSrv.modify(userObject);
+        } catch (SQLException ex) {
+            Logger.getLogger(UsersController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        resp.setContentType("application/json;charset=UTF-8");
+        resp.getWriter().print(new Gson().toJson(userObject));
+    }
+
+
+	private void setAccessControlHeader(HttpServletResponse resp) {
+		resp.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+		resp.setHeader("Access-Control-Allow-Methods", "OPTIONS,HEAD,GET,PUT,DELETE,POST"); //get post put delete
+		resp.setHeader("Access-Control-Allow-Headers", "X-PINGOTHER,Origin,X-Requested-With,Content-Type,Accept");
+		resp.setHeader("Access-Control-Max-Age", "1728000");//20 dias
+	}
+
+	@Override
+	protected void doOptions(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		setAccessControlHeader(resp);
+		resp.setStatus(HttpServletResponse.SC_OK);
 	}
 
 }

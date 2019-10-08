@@ -9,8 +9,11 @@ import { MessageService } from './message.service';
 })
 export class HeroService {
 
-  constructor(private messageSrv : MessageService) { }
-  arrayHeroes =[];
+  arrayHeroes: Hero[];
+
+  constructor(private messageSrv : MessageService) { 
+    this.arrayHeroes = HEROES;
+  }
   getHeroes() : Hero[]{
     this.messageSrv.add("HeroService: capturando heroes");
     return HEROES;
@@ -22,7 +25,7 @@ export class HeroService {
   }
 
   getHero(id : number): Hero {
-    let hero = this.arrayHeroes.find( (hero) => {return hero.id === id}); 
+    let hero = this.arrayHeroes.find( hero => hero.id === id );
     return hero;
   }
 }

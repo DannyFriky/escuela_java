@@ -1,13 +1,10 @@
 <div class="div-marco" *ngIf="hero">
-
-    <!--Solo se crea si hero tiene algun valor-->
-    <h2>{{hero.name | uppercase}} details</h2>
-    <div><span>Id: </span> {{ hero.id }}</div>
-    <div>
-        <label> Name. </label>
-        <input [(ngModel)]="hero.name" placeholder="Write the name"/>
-        <!--ngModel el modelo de este campo, si consideramos esta campo como una 
-        entidad separada, el modelo es esta variable. el modelo de todo el template es 
-        hero-details component   -->
+        <!-- Sólo se crea si hero tiene algún valor -->
+        <h2>{{ hero.name | uppercase }} details</h2>
+        <div><span>Id: </span> {{ hero.id }}</div>
+        <div>
+            <label>Name: </label>
+            <input [(ngModel)]="hero.name" placeholder="Write the name"/>
+        </div>
+    
     </div>
-</div>

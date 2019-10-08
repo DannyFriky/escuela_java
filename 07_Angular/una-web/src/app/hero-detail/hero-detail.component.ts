@@ -24,7 +24,6 @@ export class HeroDetailComponent implements OnInit {
   getHero():void{
     //Cogemos el id del parametro de la ruta /detail/:id
     const id = this.route.snapshot.paramMap.get('id');
-  
     this.hero = this.heroSrv.getHero(parseInt(id));
   
   }

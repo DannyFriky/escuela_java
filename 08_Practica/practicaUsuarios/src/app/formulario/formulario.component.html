@@ -1,0 +1,22 @@
+<div class="div-marco" *ngIf="userMod">
+    <!-- Sólo se crea si hero tiene algún valor -->
+    
+    <div><span>Id: </span> {{ userMod.id }}</div>
+    <div>
+        <label>Email: </label>
+        <input [(ngModel)]="userMod.email" placehorlder="email"/>
+    </div>
+    <div>
+        <label>Contraseña: </label>
+        <input [(ngModel)]="userMod.password" placehorlder="password"/>
+    </div>
+    <div>
+        <label>Nombre: </label>
+        <input [(ngModel)]="userMod.name" placehorlder="name"/>
+    </div>
+    <div>
+        <label>Edad: </label>
+        <input [(ngModel)]="userMod.age" placehorlder="age"/>
+    </div>
+
+</div>
