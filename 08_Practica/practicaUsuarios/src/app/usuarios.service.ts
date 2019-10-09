@@ -33,8 +33,12 @@ export class UsuariosService {
   }
 
   delete(userDel : User): Observable<User>{
-    const url = `${this.urlApiRest}/{id:${userDel.id}}`;
-    alert(url);
+    const url = `${this.urlApiRest}/?${userDel.id}`;
     return  this.httpCli.delete<User>(url, this.httpOptions);
+  }
+
+  addUser(userAdd : User): Observable<User>{
+    return  this.httpCli.post<User>(this.urlApiRest, userAdd, this.httpOptions);
+
   }
 }

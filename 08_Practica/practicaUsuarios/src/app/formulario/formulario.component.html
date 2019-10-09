@@ -20,3 +20,14 @@
     </div>
 
 </div>
+
+<div class="div-marco" *ngIf="userMost">
+    <!-- Sólo se crea si hero tiene algún valor -->
+    
+    <div><span>Id: </span> {{ userMost.id }}</div>
+    <div><span>Email: </span> {{ userMost.email }}</div>
+    <div><span>Password: </span> {{ userMost.password }}</div>
+    <div><span>Name: </span> {{ userMost.name }}</div>
+    <div><span>Age: </span> {{ userMost.age }}</div>
+
+</div>
