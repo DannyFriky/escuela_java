@@ -1,6 +1,7 @@
 <div *ngIf="messageSrv.messages.length">
+    
     <h2>Mensajes: </h2>
-    <button (click) = "messageSrv.clear()">Limpiar</button>
+    <button (click)="messageSrv.clear()">Limpiar</button>
     <div *ngFor='let message of messageSrv.messages'>
         {{ message}}
     </div>
@@ -9,5 +10,5 @@
 
 <div *ngIf="messageSrv.messages.length == 0">
     <p> No hay mensages</p>
-    
+
 </div>

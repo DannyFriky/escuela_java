@@ -5,9 +5,11 @@ import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-registro',
-  template: `<h2>REGISTRAR</h2>
+  template: `
+  <h2>REGISTRAR</h2>
   <app-formulario [userMod]="this.userAdd"></app-formulario>
-  <input type="button" (click)="add(this.userAdd)" value="Añadir">`
+  <input type="button" (click)="add(this.userAdd)" value="Añadir">
+  `
 })
 export class RegistroComponent implements OnInit {
   userAdd: User;
@@ -20,9 +22,10 @@ export class RegistroComponent implements OnInit {
 
   add(user: User) {
     this.usuarioSrv.addUser(user).subscribe((obj) => {
-      this.usuarioSrv.addMessage("Usuario añadido");
 
+      this.usuarioSrv.addMessage("Usuario añadido");
       this.ngOnInit();
+      
     });;
   }
 

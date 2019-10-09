@@ -30,6 +30,11 @@ export class ListadoComponent implements OnInit {
     this.userMost =false;
   }
 
+  mostrar(user :User){
+    this.userModificado = user;
+    this.userMost =true;
+  }
+
   modificar(user: User) {
     this.usuarioSrv.modify(user).subscribe((obj) => {
       this.usuarioSrv.addMessage("Usuario modificado");
@@ -47,8 +52,4 @@ export class ListadoComponent implements OnInit {
     });;
   }
 
-  mostrar(user :User){
-    this.userModificado = user;
-    this.userMost =true;
-  }
 }

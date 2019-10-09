@@ -1,17 +1,15 @@
+<h1>Web de Usuarios</h1>
+<h2 class="text-muted">{{title}}</h2>
 
+<a routerLink="/registro" class="btn btn-dark" role="button">Registrar Usuario</a>
+<a routerLink="/lista" class="btn btn-dark" role="button">Listar Usuarios</a>
 
-        <h1>Web de Usuarios</h1>
-        <h2 class="text-muted">{{title}}</h2>
-   
-
-        <a routerLink="/registro" class="btn btn-dark" role="button">Registrar Usuario</a>
-        <a routerLink="/lista" class="btn btn-dark" role="button">Listar Usuarios</a>
-        
-        <div><router-outlet></router-outlet></div>
-   
-
+<div>
+    <router-outlet></router-outlet>
+</div>
 
 <ngb-alert [dismissible]="false">
     <app-messages></app-messages>
 </ngb-alert>
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

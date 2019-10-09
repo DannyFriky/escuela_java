@@ -31,7 +31,7 @@
     <input type="button" (click)="modificar(this.userModificado)" value="Modificar">
 </div>
 
-<div *ngIf="this.userMod!= null">
-    <h2>{{ this.userMod.name | uppercase }} MOSTRAR</h2>
+<div *ngIf="this.userModificado!= null">
+    <h2>{{ this.userModificado.name | uppercase }} MOSTRAR</h2>
     <app-formulario [userMod]="this.userModificado" [userMost]="this.userMost"></app-formulario>
 </div>
