@@ -1,0 +1,9 @@
+.text-muted{
+    color: rgb(87, 80, 80);
+}
+*{
+    margin: 20px;
+}
+.input-group-text{
+    width: 120px;
+}

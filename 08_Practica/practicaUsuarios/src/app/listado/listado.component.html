@@ -1,1 +1,37 @@
-<p>listado works!</p>
+<h2>Listado Usuarios REST: </h2>
+
+<table class="table table-striped table-dark">
+
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Email</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Modificar</th>
+            <th scope="col">Borrar</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        <tr *ngFor="let user of usuariosRecibidos">
+            <th scope="row"> <a (click)=mostrar(user)> {{user.id}} </a></th>
+            <td><a (click)=mostrar(user)>{{user.email}}</a></td>
+            <td> <a (click)=mostrar(user)>{{user.name}}</a></td>
+            <td> <input type="button" (click)="modUser(user)" value="Modificar"></td>
+            <td><input type="button" (click)="borrar(user)" value="Borrar"></td>
+        </tr>
+
+    </tbody>
+</table>
+
+<div *ngIf="this.userModificado != null">
+    <h2>{{ this.userModificado.name | uppercase }} MODIFICAR</h2>
+    <app-formulario [userMod]="this.userModificado" [userMost]="this.userMost"></app-formulario>
+    <input type="button" (click)="modificar(this.userModificado)" value="Modificar">
+</div>
+
+<div *ngIf="this.userMod!= null">
+    <h2>{{ this.userMod.name | uppercase }} MOSTRAR</h2>
+    <app-formulario [userMod]="this.userModificado" [userMost]="this.userMost"></app-formulario>
+</div>

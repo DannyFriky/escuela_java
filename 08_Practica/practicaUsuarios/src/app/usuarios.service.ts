@@ -9,7 +9,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class UsuariosService {
   urlApiRest ="http://localhost:8084/CRUD_Vista_JSTL/api/users";
-  httpOptions = {headers : new HttpHeaders({'Content-Type':"aplication/json"})};
+  httpOptions = {
+    headers : new HttpHeaders({'Content-Type':"aplication/json"})};
 
 
   constructor(private messageSrv : MessageService, private httpCli: HttpClient) { 
@@ -33,8 +34,10 @@ export class UsuariosService {
   }
 
   delete(userDel : User): Observable<User>{
-    const url = `${this.urlApiRest}/?${userDel.id}`;
-    return  this.httpCli.delete<User>(url, this.httpOptions);
+    this.httpOptions['body']={
+      id:userDel.id
+    };
+    return  this.httpCli.delete<User>(this.urlApiRest, this.httpOptions);
   }
 
   addUser(userAdd : User): Observable<User>{

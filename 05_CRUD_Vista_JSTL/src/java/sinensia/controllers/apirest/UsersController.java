@@ -26,7 +26,7 @@ import sinensia.model.persistence.UserDAO_DerbyBD;
 /**
  * @author Danny
  */
-@WebServlet(asyncSupported = true, urlPatterns = "/api/users/*")
+@WebServlet(asyncSupported = true, urlPatterns = "/api/users")
 public class UsersController extends HttpServlet {
 
 	UserService userSrv;
@@ -41,13 +41,14 @@ public class UsersController extends HttpServlet {
 	@Override
 	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("application/json;charset=UTF-8");
-		String id = req.getQueryString();
-		//String jsonUser = req.getReader().readLine();
 		setAccessControlHeader(resp);
+		//String id = req.getQueryString();
+		String jsonUser = req.getReader().readLine();
+		
 
-		//User userObject = new Gson().fromJson(jsonUser, User.class);
+		User userObject = new Gson().fromJson(jsonUser, User.class);
 		try {
-			userSrv.delete(Integer.parseInt(id));
+			userSrv.delete(userObject.getId());
 		} catch (SQLException ex) {
 			Logger.getLogger(UsersController.class.getName()).log(Level.SEVERE, null, ex);
 		}

@@ -11,7 +11,7 @@ import { User } from '../model/user';
 export class FormularioComponent implements OnInit {
 
   @Input() userMod: User;
-  @Input() userMost: User;
+  @Input() userMost: boolean;
   constructor() { }
 
   ngOnInit() {
