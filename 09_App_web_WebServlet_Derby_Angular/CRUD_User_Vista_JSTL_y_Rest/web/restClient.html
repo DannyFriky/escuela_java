@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rest Client con Ajax</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>Rest Client con Ajax</div>
+        <form name="formJSON">
+            <label for="email">Email: </label>
+            <input id="email" name="email" type="email" placeholder="Write your email..."
+                   size="50" maxlength="255" required="required"/>
+            <br/>
+            <label for="password">Password: </label>
+            <input id="password" name="password" type="password" placeholder="Write your password..."
+                   size="50" maxlength="50" required="required"/>
+            <br/>
+            <label for="name">Name: </label>
+            <input id="name" name="name" type="text" placeholder="Write your name..."
+                   size="50" maxlength="50" required="required"/>
+            <br/>
+            <label for="age">Age: </label>
+            <input id="age" name="age" type="number" placeholder="Write your age..."
+                   size="10" required="required" min="1" max="199"/>
+            <br/>
+        </form>
+        <input type="submit" value="Register please!" onclick="register()"/>
+        <input type="submit" value="Modify value" onclick="modify()"/>
+        <input type="submit" value="Delete value" onclick="delet()"/>
+        <table id="data_table"></table>
+        <script src="js/jquery-3.4.1.js"></script>
+        <script src="js/ajaxRestClient.js"></script>
+    </body>
+</html>

@@ -1,9 +1,13 @@
-.text-muted{
-    color: rgb(87, 80, 80);
+.header{
+    background-color: dimgrey;
+
 }
-*{
-    margin: 20px;
+.header>h1{
+   margin-left: 25px;
+   font-weight: bold;
+   text-shadow: 2px -1px floralwhite ;
 }
-.input-group-text{
-    width: 120px;
-}
+
+.header>h2{
+    margin-left: 25px;
+ }

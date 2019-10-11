@@ -1,0 +1,24 @@
+<div *ngIf="clientes !== undefined">
+    <div *ngFor='let cliente of clientes' class="alert alert-warning" role="alert">
+        <div class="row" (click)="seleccionar(cliente)">
+            <div class="col">
+                {{ cliente.name }}
+            </div>
+            <div class="col" style="text-align: right">
+                <input (click)="edicion()" type="button" class="btn btn-outline-primary" value="Edit"> <input (click)="eliminarCliente(cliente)" type="button" class="btn btn-outline-danger" value="Delete">
+            </div>
+            <app-formulario [cliente]="cliente" [editable]="true"></app-formulario>
+        </div>
+    </div>
+
+    <!-- para editar -->
+    <div *ngIf="clienteSeleccionado !== undefined">
+        <app-formulario [cliente]="clienteSeleccionado" [editable]="editable"></app-formulario>
+        <div *ngIf="editable == true">
+            <div style="text-align: right">
+                <input (click)="editarCliente(clienteSeleccionado)" type="button" class="btn btn-primary" value="Edit">
+            </div>
+        </div>
+    </div>
+</div>
+

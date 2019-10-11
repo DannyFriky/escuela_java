@@ -1,0 +1,164 @@
+{
+	"info": {
+		"_postman_id": "f34306c1-5788-468e-ac50-40b658898d15",
+		"name": "Personas Spring Rest Client",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Añadir usuario \"A\" guay",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/personas?nombre=Ana&edad=30",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"personas"
+					],
+					"query": [
+						{
+							"key": "nombre",
+							"value": "Ana"
+						},
+						{
+							"key": "edad",
+							"value": "30"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Coger todos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/personas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"personas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Ana",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8084/Ejemplo_MVC_JSP/personas.do?nombre=Bea&edad=31",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"Ejemplo_MVC_JSP",
+						"personas.do"
+					],
+					"query": [
+						{
+							"key": "nombre",
+							"value": "Bea"
+						},
+						{
+							"key": "edad",
+							"value": "31"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar Fulanito",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/personas/pornombre?nombre=Fulanito",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"personas",
+						"pornombre"
+					],
+					"query": [
+						{
+							"key": "nombre",
+							"value": "Fulanito"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar Fulanito 2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/personas?nombre=Fulanito",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"personas"
+					],
+					"query": [
+						{
+							"key": "nombre",
+							"value": "Fulanito"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar Fulanito3",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/personas?nombre=Fulanito",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"personas"
+					],
+					"query": [
+						{
+							"key": "nombre",
+							"value": "Fulanito"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
